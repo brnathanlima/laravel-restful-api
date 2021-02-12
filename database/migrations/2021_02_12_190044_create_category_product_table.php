@@ -15,7 +15,7 @@ class CreateCategoryProductTable extends Migration
     {
         Schema::create('category_product', function (Blueprint $table) {
             $table->foreignId('category_id')->constrained();
-            $table->foreignId('products_id')->constrained();
+            $table->foreignId('product_id')->constrained();
         });
     }
 
