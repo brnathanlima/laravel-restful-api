@@ -113,20 +113,20 @@ class UserController extends ApiController
 
         if (request()->has('admin')) {
             if (!$user->isVerified()) {
-                return response()->json([
-                    'error' => 'Only verified users can modify the admin field.',
-                    'code' => HttpResponse::HTTP_CONFLICT
-                ], HttpResponse::HTTP_CONFLICT);
+                return $this->errorResponse(
+                    'Only verified users can modify the admin field.',
+                    HttpResponse::HTTP_CONFLICT
+                );
             }
 
             $user->admin = $validatedData['admin'];
         }
 
         if (!$user->isDirty()) {
-            return response()->json([
-                'error' => 'You need to specify a different value to update.',
-                'code' => HttpResponse::HTTP_UNPROCESSABLE_ENTITY
-            ], HttpResponse::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->errorResponse(
+                'You need to specify a different value to update.',
+                HttpResponse::HTTP_UNPROCESSABLE_ENTITY
+            );
         }
 
         $user->save();
