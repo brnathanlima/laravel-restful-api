@@ -26,13 +26,13 @@ class DatabaseSeeder extends Seeder
         Transaction::truncate();
         DB::table('category_product')->truncate();
 
-        User::factory(50)->create();
-        Category::factory(7)->create();
-        Product::factory(250)->create()->each(function ($product) {
+        User::factory(100)->create();
+        Category::factory(20)->create();
+        Product::factory(100)->create()->each(function ($product) {
             $categories = Category::all()->random(mt_rand(1, 5))->pluck('id');
 
             $product->categories()->attach($categories);
         });
-        Transaction::factory(250)->create();
+        Transaction::factory(100)->create();
     }
 }
