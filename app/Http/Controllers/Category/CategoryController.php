@@ -57,9 +57,16 @@ class CategoryController extends ApiController
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Category $category)
     {
-        //
+        $validatedAttributes = request()->validate([
+            'name' => ['required', 'string', 'max:255', 'min:4'],
+            'description' => ['required', 'string', 'max:255', 'min:10']
+        ]);
+
+        $category->update($validatedAttributes);
+
+        return $this->showOne($category);
     }
 
     /**
