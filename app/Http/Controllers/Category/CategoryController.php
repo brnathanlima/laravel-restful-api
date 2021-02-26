@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CategoryController extends ApiController
 {
@@ -14,17 +16,9 @@ class CategoryController extends ApiController
      */
     public function index()
     {
-        //
-    }
+        $categories = Category::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showAll($categories);
     }
 
     /**
@@ -33,53 +27,58 @@ class CategoryController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $validatedAttributes = request()->validate([
+            'name' => ['required', 'string', 'max:255', 'min:4'],
+            'description' => ['required', 'string', 'max:255', 'min:10']
+        ]);
+
+        $category = Category::create($validatedAttributes);
+
+        return $this->showOne($category, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne($category);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Category $category)
     {
-        //
+        $validatedAttributes = request()->validate([
+            'name' => ['required', 'string', 'max:255', 'min:4'],
+            'description' => ['required', 'string', 'max:255', 'min:10']
+        ]);
+
+        $category->update($validatedAttributes);
+
+        return $this->showOne($category);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return $this->showOne($category, 200);
     }
 }
