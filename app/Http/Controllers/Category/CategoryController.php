@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CategoryController extends ApiController
 {
@@ -27,9 +27,16 @@ class CategoryController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $validatedAttributes = request()->validate([
+            'name' => ['required', 'string', 'max:255', 'min:4'],
+            'description' => ['required', 'string', 'max:255', 'min:10']
+        ]);
+
+        $category = Category::create($validatedAttributes);
+
+        return $this->showOne($category, Response::HTTP_CREATED);
     }
 
     /**
