@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Buyer\BuyerProductController;
+use App\Http\Controllers\Buyer\BuyerSellerController;
 use App\Http\Controllers\Buyer\BuyerTransactionController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Product\ProductController;
@@ -33,3 +34,4 @@ Route::get('transactions/{transaction}/categories', TransactionCategoryControlle
 Route::get('transactions/{transaction}/sellers', TransactionSellerController::class);
 Route::get('buyers/{buyer}/transactions', BuyerTransactionController::class);
 Route::get('buyers/{buyer}/products', BuyerProductController::class);
+Route::get('buyers/{buyer}/sellers', BuyerSellerController::class);
