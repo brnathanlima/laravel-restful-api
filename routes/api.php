@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Buyer\BuyerCategoryController;
 use App\Http\Controllers\Buyer\BuyerController;
 use App\Http\Controllers\Buyer\BuyerProductController;
 use App\Http\Controllers\Buyer\BuyerSellerController;
@@ -35,3 +36,4 @@ Route::get('transactions/{transaction}/sellers', TransactionSellerController::cl
 Route::get('buyers/{buyer}/transactions', BuyerTransactionController::class);
 Route::get('buyers/{buyer}/products', BuyerProductController::class);
 Route::get('buyers/{buyer}/sellers', BuyerSellerController::class);
+Route::get('buyers/{buyer}/categories', BuyerCategoryController::class);
