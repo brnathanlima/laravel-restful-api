@@ -15,11 +15,14 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Seller\SellerBuyerController;
 use App\Http\Controllers\Seller\SellerCategoryController;
 use App\Http\Controllers\Seller\SellerController;
+use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerTransactionController;
 use App\Http\Controllers\Transaction\TransactionCategoryController;
 use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\Transaction\TransactionSellerController;
 use App\Http\Controllers\User\UserController;
+use App\Models\Product;
+use App\Models\Seller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,3 +55,4 @@ Route::get('categories/{category}/buyers', CategoryBuyerController::class);
 Route::get('sellers/{seller}/transactions', SellerTransactionController::class);
 Route::get('sellers/{seller}/categories', SellerCategoryController::class);
 Route::get('sellers/{seller}/buyers', SellerBuyerController::class);
+Route::resource('sellers.products', SellerProductController::class)->except(['show', 'create', 'edit']);
