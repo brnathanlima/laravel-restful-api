@@ -12,6 +12,7 @@ use App\Http\Controllers\Category\CategorySellerController as CategoryCategorySe
 use App\Http\Controllers\Category\CategoryTransactionController;
 use App\Http\Controllers\CategorySellerController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Seller\SellerCategoryController;
 use App\Http\Controllers\Seller\SellerController;
 use App\Http\Controllers\Seller\SellerTransactionController;
 use App\Http\Controllers\Transaction\TransactionCategoryController;
@@ -48,3 +49,4 @@ Route::get('categories/{category}/sellers', CategoryCategorySellerController::cl
 Route::get('categories/{category}/transactions', CategoryTransactionController::class);
 Route::get('categories/{category}/buyers', CategoryBuyerController::class);
 Route::get('sellers/{seller}/transactions', SellerTransactionController::class);
+Route::get('sellers/{seller}/categories', SellerCategoryController::class);
