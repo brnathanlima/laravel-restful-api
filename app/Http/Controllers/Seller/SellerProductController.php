@@ -114,8 +114,14 @@ class SellerProductController extends ApiController
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seller $seller)
+    public function destroy(Seller $seller, Product $product)
     {
-        //
+        if (!$product->isTheProductSeller($seller)) {
+            throw new HttpException(422, 'The specified seller is not the actual seller of the product');
+        }
+
+        $product->delete();
+
+        return response('', 204);
     }
 }
