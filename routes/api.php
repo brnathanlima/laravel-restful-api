@@ -12,6 +12,7 @@ use App\Http\Controllers\Category\CategorySellerController as CategoryCategorySe
 use App\Http\Controllers\Category\CategoryTransactionController;
 use App\Http\Controllers\CategorySellerController;
 use App\Http\Controllers\Product\ProductBuyerController;
+use App\Http\Controllers\Product\ProductCategoryController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Product\ProductTransactionController;
 use App\Http\Controllers\Seller\SellerBuyerController;
@@ -60,3 +61,4 @@ Route::get('sellers/{seller}/buyers', SellerBuyerController::class);
 Route::apiResource('sellers.products', SellerProductController::class)->except(['show']);
 Route::get('products/{product}/transactions', ProductTransactionController::class);
 Route::get('products/{product}/buyers', ProductBuyerController::class);
+Route::apiResource('products.categories', ProductCategoryController::class)->except(['store', 'show']);
