@@ -59,3 +59,4 @@ Route::get('sellers/{seller}/categories', SellerCategoryController::class);
 Route::get('sellers/{seller}/buyers', SellerBuyerController::class);
 Route::apiResource('sellers.products', SellerProductController::class)->except(['show']);
 Route::get('products/{product}/transactions', ProductTransactionController::class);
+Route::get('products/{product}/buyers', ProductBuyerController::class);
