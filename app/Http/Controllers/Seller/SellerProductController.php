@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Seller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
 {
@@ -67,9 +68,44 @@ class SellerProductController extends ApiController
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Seller $seller, Product $product)
     {
-        //
+        $validatedAttributes = request()->validate([
+            'name' => [
+                'string',
+                'required',
+                'min:5',
+                'max:255'
+            ],
+            'description' => [
+                'string',
+                'required'
+            ],
+            'quantity' => [
+                'required',
+                'integer',
+                'min:1'
+            ],
+            'status' => [
+                'required',
+                'in:' . Product::AVAILABLE_PRODUCT . ',' . Product::UNAVAILABLE_PRODUCT
+            ],
+            'image' => [
+                'required'
+            ]
+        ]);
+
+        if (!$product->isTheProductSeller($seller)) {
+            throw new HttpException(422, 'The specified seller is not the actual seller of the product');
+        }
+
+        if ($product->isAvailable() && count($product->categories) > 0) {
+            throw new HttpException(409, 'An active product must have at least one category');
+        }
+
+        $product->update($validatedAttributes);
+
+        return $this->showOne($product);
     }
 
     /**

@@ -26,6 +26,11 @@ class Product extends Model
         'pivot'
     ];
 
+    public function isTheProductSeller(Seller $seller)
+    {
+        return $this->seller_id === $seller->id;
+    }
+
     public function isAvailable()
     {
         return $this->status === Product::AVAILABLE_PRODUCT;
