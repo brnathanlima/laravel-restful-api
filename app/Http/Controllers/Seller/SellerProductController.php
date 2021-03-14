@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Seller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SellerProductController extends ApiController
@@ -27,9 +29,35 @@ class SellerProductController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Seller $seller)
     {
-        //
+        $validatedData = request()->validate([
+            'name' => [
+                'string',
+                'required',
+                'min:5',
+                'max:255'
+            ],
+            'description' => [
+                'string',
+                'required'
+            ],
+            'quantity' => [
+                'integer',
+                'required',
+                'min:1'
+            ],
+            'image' => [
+                'nullable',
+                'image'
+            ]
+        ]);
+
+        $validatedData['seller_id'] = $seller->id;
+
+        $product = $seller->products()->create($validatedData);
+
+        return $this->showOne($product);
     }
 
     /**

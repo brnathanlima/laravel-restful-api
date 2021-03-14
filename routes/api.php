@@ -55,4 +55,4 @@ Route::get('categories/{category}/buyers', CategoryBuyerController::class);
 Route::get('sellers/{seller}/transactions', SellerTransactionController::class);
 Route::get('sellers/{seller}/categories', SellerCategoryController::class);
 Route::get('sellers/{seller}/buyers', SellerBuyerController::class);
-Route::resource('sellers.products', SellerProductController::class)->except(['show', 'create', 'edit']);
+Route::apiResource('sellers.products', SellerProductController::class)->except(['show']);
