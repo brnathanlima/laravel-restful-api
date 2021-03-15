@@ -54,6 +54,7 @@ class SellerProductController extends ApiController
             ]
         ]);
 
+        $validatedData['image'] = request()->file('image')->store('');
         $validatedData['seller_id'] = $seller->id;
 
         $product = $seller->products()->create($validatedData);
