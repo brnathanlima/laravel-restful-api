@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Seller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
@@ -54,6 +55,7 @@ class SellerProductController extends ApiController
             ]
         ]);
 
+        $validatedData['image'] = request()->file('image')->store('');
         $validatedData['seller_id'] = $seller->id;
 
         $product = $seller->products()->create($validatedData);
@@ -91,16 +93,23 @@ class SellerProductController extends ApiController
                 'in:' . Product::AVAILABLE_PRODUCT . ',' . Product::UNAVAILABLE_PRODUCT
             ],
             'image' => [
-                'required'
+                'nullable',
+                'image'
             ]
         ]);
 
         if (!$product->isTheProductSeller($seller)) {
-            throw new HttpException(422, 'The specified seller is not the actual seller of the product');
+            return $this->errorResponse('The specified seller is not the actual seller of the product', 422);
         }
 
         if ($product->isAvailable() && count($product->categories) > 0) {
-            throw new HttpException(409, 'An active product must have at least one category');
+            return $this->errorResponse('An active product must have at least one category', 409);
+        }
+
+        if (request()->hasFile('image')) {
+            Storage::delete($product->image);
+
+            $validatedAttributes['image'] = request()->file('image')->store('');
         }
 
         $product->update($validatedAttributes);
@@ -117,10 +126,12 @@ class SellerProductController extends ApiController
     public function destroy(Seller $seller, Product $product)
     {
         if (!$product->isTheProductSeller($seller)) {
-            throw new HttpException(422, 'The specified seller is not the actual seller of the product');
+            return $this->errorResponse('The specified seller is not the actual seller of the product', 422);
         }
 
         $product->delete();
+
+        Storage::delete($product->image);
 
         return response('', 204);
     }
