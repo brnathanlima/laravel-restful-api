@@ -93,7 +93,7 @@ class SellerProductController extends ApiController
                 'in:' . Product::AVAILABLE_PRODUCT . ',' . Product::UNAVAILABLE_PRODUCT
             ],
             'image' => [
-                'required',
+                'nullable',
                 'image'
             ]
         ]);
@@ -104,6 +104,12 @@ class SellerProductController extends ApiController
 
         if ($product->isAvailable() && count($product->categories) > 0) {
             return $this->errorResponse('An active product must have at least one category', 409);
+        }
+
+        if (request()->hasFile('image')) {
+            Storage::delete($product->image);
+
+            $validatedAttributes['image'] = request()->file('image')->store('');
         }
 
         $product->update($validatedAttributes);
