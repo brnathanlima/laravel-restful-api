@@ -91,7 +91,8 @@ class SellerProductController extends ApiController
                 'in:' . Product::AVAILABLE_PRODUCT . ',' . Product::UNAVAILABLE_PRODUCT
             ],
             'image' => [
-                'required'
+                'required',
+                'image'
             ]
         ]);
 
