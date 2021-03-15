@@ -21,19 +21,19 @@ class ProductBuyerTransactionController extends ApiController
         ]);
 
         if ($buyer->id === $product->seller->id) {
-            return response('The buyer must be different from the seller', 409);
+            return $this->errorResponse('The buyer must be different from the seller', 409);
         }
 
         if (!$buyer->isVerified()) {
-            return response('The buyer must be different a verified user', 409);
+            return $this->errorResponse('The buyer must be different a verified user', 409);
         }
 
         if (!$product->isAvailable()) {
-            return response('The product is not available', 409);
+            return $this->errorResponse('The product is not available', 409);
         }
 
         if ($product->quantity < request('quantity')) {
-            return response('The product does not have enough units for this transaction', 409);
+            return $this->errorResponse('The product does not have enough units for this transaction', 409);
         }
 
         return DB::transaction(function () use ($validatedAttributes, $product, $buyer) {

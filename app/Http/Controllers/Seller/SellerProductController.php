@@ -96,11 +96,11 @@ class SellerProductController extends ApiController
         ]);
 
         if (!$product->isTheProductSeller($seller)) {
-            throw new HttpException(422, 'The specified seller is not the actual seller of the product');
+            return $this->errorResponse('The specified seller is not the actual seller of the product', 422);
         }
 
         if ($product->isAvailable() && count($product->categories) > 0) {
-            throw new HttpException(409, 'An active product must have at least one category');
+            return $this->errorResponse('An active product must have at least one category', 409);
         }
 
         $product->update($validatedAttributes);
@@ -117,7 +117,7 @@ class SellerProductController extends ApiController
     public function destroy(Seller $seller, Product $product)
     {
         if (!$product->isTheProductSeller($seller)) {
-            throw new HttpException(422, 'The specified seller is not the actual seller of the product');
+            return $this->errorResponse('The specified seller is not the actual seller of the product', 422);
         }
 
         $product->delete();
