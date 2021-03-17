@@ -65,3 +65,4 @@ Route::get('products/{product}/buyers', ProductBuyerController::class);
 Route::apiResource('products.categories', ProductCategoryController::class)->except(['store', 'show']);
 Route::post('products/{product}/buyers/{buyer}/transactions', ProductBuyerTransactionController::class);
 Route::get('users/verify/{token}', [UserController::class, 'verity'])->name('verify');
+Route::get('users/{user}/resend', [UserController::class, 'resend'])->name('resend');
