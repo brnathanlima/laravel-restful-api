@@ -31,4 +31,9 @@ trait ApiResponser
     {
         return $this->successResponse($model, $code);
     }
+
+    public function showMessage($message, $code = 200)
+    {
+        return $this->successResponse($message, $code);
+    }
 }
