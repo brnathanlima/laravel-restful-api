@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,6 +19,8 @@ class User extends Authenticatable
     const REGULAR_USER = 'false';
 
     protected $table = 'users';
+
+    public $transformer = UserTransformer::class;
 
     /**
      * The attributes that are mass assignable.
