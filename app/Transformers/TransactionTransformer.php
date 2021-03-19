@@ -16,7 +16,7 @@ class TransactionTransformer extends TransformerAbstract
     {
         return [
             'identifier' => (int) $transaction->id,
-            'quantity' => (string) $transaction->name,
+            'quantity' => (int) $transaction->quantity,
             'buyer' => (int) $transaction->buyer_id,
             'product' => (int) $transaction->product_id,
             'creationDate' => $transaction->created_at,
