@@ -71,10 +71,10 @@ Route::prefix('sellers/{seller}')->group(function () {
 });
 
 Route::resource('products', ProductController::class, ['only' => ['index', 'show']]);
+Route::apiResource('products.categories', ProductCategoryController::class)->except(['store', 'show']);
 Route::prefix('products/{product}')->group(function () {
-    Route::get('transactions', ProductTransactionController::class);
-    Route::get('buyers', ProductBuyerController::class);
-    Route::apiResource('categories', ProductCategoryController::class)->except(['store', 'show']);
+    Route::get('transactions', ProductTransactionController::class)->name('products.transactions');
+    Route::get('buyers', ProductBuyerController::class)->name('products.buyers');
     Route::post('buyers/{buyer}/transactions', ProductBuyerTransactionController::class);
 });
 
