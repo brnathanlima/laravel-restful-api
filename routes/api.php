@@ -80,6 +80,6 @@ Route::prefix('products/{product}')->group(function () {
 
 Route::resource('users', UserController::class, ['except' => ['create', 'edit']]);
 Route::prefix('users')->group(function () {
-    Route::get('users/verify/{token}', [UserController::class, 'verity'])->name('verify');
-    Route::get('users/{user}/resend', [UserController::class, 'resend'])->name('resend');
+    Route::get('verify/{token}', [UserController::class, 'verity'])->name('verify');
+    Route::get('{user}/resend', [UserController::class, 'resend'])->name('resend');
 });
