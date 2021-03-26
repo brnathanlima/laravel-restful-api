@@ -48,10 +48,10 @@ Route::prefix('transactions')->group(function () {
 
 Route::apiResource('buyers', BuyerController::class, ['only' => ['index', 'show']]);
 Route::prefix('buyers')->group(function () {
-    Route::get('{buyer}/transactions', BuyerTransactionController::class);
-    Route::get('{buyer}/products', BuyerProductController::class);
-    Route::get('{buyer}/sellers', BuyerSellerController::class);
-    Route::get('{buyer}/categories', BuyerCategoryController::class);
+    Route::get('{buyer}/transactions', BuyerTransactionController::class)->name('buyers.transactions');
+    Route::get('{buyer}/products', BuyerProductController::class)->name('buyers.products');
+    Route::get('{buyer}/sellers', BuyerSellerController::class)->name('buyers.sellers');
+    Route::get('{buyer}/categories', BuyerCategoryController::class)->name('buyers.categories');
 });
 
 Route::apiResource('categories', CategoryController::class);
