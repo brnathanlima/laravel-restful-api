@@ -40,29 +40,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('buyers', BuyerController::class, ['only' => ['index', 'show']]);
-Route::resource('sellers', SellerController::class, ['only' => ['index', 'show']]);
-Route::resource('categories', CategoryController::class, ['except' => ['create', 'edit']]);
-Route::resource('products', ProductController::class, ['only' => ['index', 'show']]);
-Route::resource('transactions', TransactionController::class, ['only' => ['index', 'show']]);
-Route::resource('users', UserController::class, ['except' => ['create', 'edit']]);
-Route::get('transactions/{transaction}/categories', TransactionCategoryController::class);
-Route::get('transactions/{transaction}/sellers', TransactionSellerController::class);
-Route::get('buyers/{buyer}/transactions', BuyerTransactionController::class);
-Route::get('buyers/{buyer}/products', BuyerProductController::class);
-Route::get('buyers/{buyer}/sellers', BuyerSellerController::class);
-Route::get('buyers/{buyer}/categories', BuyerCategoryController::class);
-Route::get('categories/{category}/products', CategoryProductController::class);
-Route::get('categories/{category}/sellers', CategoryCategorySellerController::class);
-Route::get('categories/{category}/transactions', CategoryTransactionController::class);
-Route::get('categories/{category}/buyers', CategoryBuyerController::class);
-Route::get('sellers/{seller}/transactions', SellerTransactionController::class);
-Route::get('sellers/{seller}/categories', SellerCategoryController::class);
-Route::get('sellers/{seller}/buyers', SellerBuyerController::class);
+Route::apiResource('transactions', TransactionController::class, ['only' => ['index', 'show']]);
+Route::prefix('transactions')->group(function () {
+    Route::get('{transaction}/categories', TransactionCategoryController::class)->name('transactions.categories');
+    Route::get('{transaction}/sellers', TransactionSellerController::class)->name('transactions.sellers');
+});
+
+Route::apiResource('buyers', BuyerController::class, ['only' => ['index', 'show']]);
+Route::prefix('buyers')->group(function () {
+    Route::get('{buyer}/transactions', BuyerTransactionController::class)->name('buyers.transactions');
+    Route::get('{buyer}/products', BuyerProductController::class)->name('buyers.products');
+    Route::get('{buyer}/sellers', BuyerSellerController::class)->name('buyers.sellers');
+    Route::get('{buyer}/categories', BuyerCategoryController::class)->name('buyers.categories');
+});
+
+Route::apiResource('categories', CategoryController::class);
+Route::prefix('categories')->group(function () {
+    Route::get('{category}/sellers', CategoryCategorySellerController::class)->name('categories.sellers');
+    Route::get('{category}/transactions', CategoryTransactionController::class)->name('categories.transactions');
+    Route::get('{category}/buyers', CategoryBuyerController::class)->name('categories.buyers');
+    Route::get('{category}/products', CategoryProductController::class)->name('categories.products');
+});
+
+Route::apiResource('sellers', SellerController::class, ['only' => ['index', 'show']]);
 Route::apiResource('sellers.products', SellerProductController::class)->except(['show']);
-Route::get('products/{product}/transactions', ProductTransactionController::class);
-Route::get('products/{product}/buyers', ProductBuyerController::class);
+Route::prefix('sellers/{seller}')->group(function () {
+    Route::get('transactions', SellerTransactionController::class)->name('sellers.transactions');
+    Route::get('categories', SellerCategoryController::class)->name('sellers.categories');
+    Route::get('buyers', SellerBuyerController::class)->name('sellers.buyers');
+});
+
+Route::apiResource('products', ProductController::class, ['only' => ['index', 'show']]);
 Route::apiResource('products.categories', ProductCategoryController::class)->except(['store', 'show']);
-Route::post('products/{product}/buyers/{buyer}/transactions', ProductBuyerTransactionController::class);
-Route::get('users/verify/{token}', [UserController::class, 'verity'])->name('verify');
-Route::get('users/{user}/resend', [UserController::class, 'resend'])->name('resend');
+Route::prefix('products/{product}')->group(function () {
+    Route::get('transactions', ProductTransactionController::class)->name('products.transactions');
+    Route::get('buyers', ProductBuyerController::class)->name('products.buyers');
+    Route::post('buyers/{buyer}/transactions', ProductBuyerTransactionController::class);
+});
+
+Route::apiResource('users', UserController::class);
+Route::prefix('users')->group(function () {
+    Route::get('verify/{token}', [UserController::class, 'verity'])->name('verify');
+    Route::get('{user}/resend', [UserController::class, 'resend'])->name('resend');
+});

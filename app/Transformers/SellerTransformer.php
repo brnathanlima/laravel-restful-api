@@ -21,7 +21,33 @@ class SellerTransformer extends TransformerAbstract
             'isVerified' => (int) $seller->verified,
             'registeredAt' => $seller->created_at,
             'lastChange' => $seller->updated_at,
-            'deletedDate' => isset($seller->deleted_at) ? (string) $seller->deleted_at : null
+            'deletedDate' => isset($seller->deleted_at) ? (string) $seller->deleted_at : null,
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'href' => route('sellers.show', $seller->id)
+                ],
+                [
+                    'rel' => 'parent',
+                    'href' => route('users.show', $seller->id)
+                ],
+                [
+                    'rel' => 'sellers.categories',
+                    'href' => route('sellers.categories', $seller->id)
+                ],
+                [
+                    'rel' => 'sellers.products',
+                    'href' => route('sellers.products.index', $seller->id)
+                ],
+                [
+                    'rel' => 'sellers.buyers',
+                    'href' => route('sellers.buyers', $seller->id)
+                ],
+                [
+                    'rel' => 'sellers.transactions',
+                    'href' => route('sellers.transactions', $seller->id)
+                ],
+            ]
         ];
     }
 
