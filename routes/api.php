@@ -42,8 +42,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('transactions', TransactionController::class, ['only' => ['index', 'show']]);
 Route::prefix('transactions')->group(function () {
-    Route::get('{transaction}/categories', TransactionCategoryController::class);
-    Route::get('{transaction}/sellers', TransactionSellerController::class);
+    Route::get('{transaction}/categories', TransactionCategoryController::class)->name('transactions.categories');
+    Route::get('{transaction}/sellers', TransactionSellerController::class)->name('transactions.sellers');
 });
 
 Route::apiResource('buyers', BuyerController::class, ['only' => ['index', 'show']]);
