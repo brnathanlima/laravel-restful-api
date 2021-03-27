@@ -5,11 +5,19 @@ namespace App\Http\Controllers\Product;
 use App\Http\Controllers\ApiController;
 use App\Models\Buyer;
 use App\Models\Product;
+use App\Transformers\TransactionTransformer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductBuyerTransactionController extends ApiController
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->middleware('transform.input:' . TransactionTransformer::class);
+    }
+
     public function __invoke(Product $product, Buyer $buyer)
     {
         $validatedAttributes = request()->validate([
