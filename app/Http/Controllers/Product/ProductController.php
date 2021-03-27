@@ -7,6 +7,11 @@ use App\Models\Product;
 
 class ProductController extends ApiController
 {
+    public function __construct()
+    {
+        $this->middleware('client.credentials');
+    }
+
     /**
      * Display a listing of the resource.
      *
