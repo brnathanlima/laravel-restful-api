@@ -134,7 +134,7 @@ class UserController extends ApiController
      *          required=true,
      *      ),
      *      @OA\Response(
-     *          response=202,
+     *          response=200,
      *          description="Successful operation",
      *      ),
      *      @OA\Response(

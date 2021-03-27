@@ -103,7 +103,7 @@
                     "required": true
                 },
                 "responses": {
-                    "202": {
+                    "200": {
                         "description": "Successful operation"
                     },
                     "400": {
