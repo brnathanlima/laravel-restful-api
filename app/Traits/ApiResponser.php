@@ -12,7 +12,10 @@ trait ApiResponser
 {
     private function successResponse($data, $code)
     {
-        return response()->json($data, $code);
+        return response()->json([
+            'message' => $data,
+            'code' => $code
+        ]);
     }
 
     protected function errorResponse($message, $code)
