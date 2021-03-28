@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductTransactionController extends ApiController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function __invoke(Product $product)
     {
         $transactions = $product->transactions;
