@@ -12,6 +12,8 @@ class SellerTransactionController extends ApiController
     public function __construct()
     {
         parent::__construct();
+
+        $this->middleware('scope:read-general');
     }
 
     public function __invoke(Seller $seller)
