@@ -13,6 +13,7 @@ class SellerCategoryController extends ApiController
         parent::__construct();
 
         $this->middleware('scope:read-general');
+        $this->middleware('can:view,seller');
     }
 
     public function __invoke(Seller $seller)
