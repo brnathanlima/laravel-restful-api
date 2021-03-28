@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class SellerTransactionController extends ApiController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function __invoke(Seller $seller)
     {
         $transactions = $seller->products()->whereHas('transactions')

@@ -83,3 +83,6 @@ Route::prefix('users')->group(function () {
     Route::get('verify/{token}', [UserController::class, 'verity'])->name('verify');
     Route::get('{user}/resend', [UserController::class, 'resend'])->name('resend');
 });
+
+Route::post('oauth/token', [Laravel\Passport\Http\Controllers\AccessTokenController::class, 'issueToken'])
+    ->name('passport.token');
