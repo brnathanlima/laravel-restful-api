@@ -13,6 +13,7 @@ class TransactionController extends ApiController
         parent::__construct();
 
         $this->middleware('scope:read-general')->only('show');
+        $this->middleware('can:view,transaction')->only('show');
     }
 
     /**
