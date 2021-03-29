@@ -28,6 +28,7 @@ use App\Http\Controllers\User\UserController;
 use App\Models\Product;
 use App\Models\Seller;
 use Illuminate\Support\Facades\Route;
+use OpenApi\LinkExample\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,11 +79,12 @@ Route::prefix('products/{product}')->group(function () {
     Route::post('buyers/{buyer}/transactions', ProductBuyerTransactionController::class);
 });
 
-Route::apiResource('users', UserController::class);
 Route::prefix('users')->group(function () {
     Route::get('verify/{token}', [UserController::class, 'verify'])->name('verify');
     Route::get('{user}/resend', [UserController::class, 'resend'])->name('resend');
+    Route::get('me', [UserController::class, 'me'])->name('me');
 });
+Route::apiResource('users', UserController::class);
 
 Route::post('oauth/token', [Laravel\Passport\Http\Controllers\AccessTokenController::class, 'issueToken'])
     ->name('passport.token');
