@@ -113,7 +113,6 @@ class UserController extends ApiController
             ],
             'admin' => [
                 'nullable',
-
             ]
         ]);
 
@@ -121,17 +120,13 @@ class UserController extends ApiController
             $user->name = $validatedData['name'];
         }
 
-        if (request()->has('email') && $user->email != $validatedData['email']) {
-            $user->verified = User::UNVERIFIED_USER;
-            $user->verification_token = User::generateVerificationCode();
-            $user->email = $validatedData['email'];
-        }
-
         if (request()->has('password')) {
             $user->password = bcrypt($validatedData['password']);
         }
 
         if (request()->has('admin')) {
+            $this->allowedAdminAction();
+
             if (!$user->isVerified()) {
                 return $this->errorResponse(
                     'Only verified users can modify the admin field.',
@@ -139,9 +134,13 @@ class UserController extends ApiController
                 );
             }
 
-            $this->allowedAdminAction();
-
             $user->admin = $validatedData['admin'];
+        }
+
+        if (request()->has('email') && $user->email != $validatedData['email']) {
+            $user->verified = User::UNVERIFIED_USER;
+            $user->verification_token = User::generateVerificationCode();
+            $user->email = $validatedData['email'];
         }
 
         if (!$user->isDirty()) {
