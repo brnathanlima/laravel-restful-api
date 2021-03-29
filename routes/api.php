@@ -80,7 +80,7 @@ Route::prefix('products/{product}')->group(function () {
 
 Route::apiResource('users', UserController::class);
 Route::prefix('users')->group(function () {
-    Route::get('verify/{token}', [UserController::class, 'verity'])->name('verify');
+    Route::get('verify/{token}', [UserController::class, 'verify'])->name('verify');
     Route::get('{user}/resend', [UserController::class, 'resend'])->name('resend');
 });
 

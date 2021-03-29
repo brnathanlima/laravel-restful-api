@@ -161,7 +161,7 @@ class UserController extends ApiController
         return response(null, HttpResponse::HTTP_NO_CONTENT);
     }
 
-    public function verity($token)
+    public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
 
