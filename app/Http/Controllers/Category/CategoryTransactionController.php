@@ -16,6 +16,8 @@ class CategoryTransactionController extends ApiController
 
     public function __invoke(Category $category)
     {
+        $this->allowedAdminAction();
+
         $transactions = $category->products()->whereHas('transactions')
             ->with('transactions')->get()->pluck('transactions')->collapse();
 
