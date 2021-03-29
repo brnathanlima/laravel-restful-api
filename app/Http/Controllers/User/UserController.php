@@ -25,17 +25,9 @@ class UserController extends ApiController
     }
 
     /**
-     * @OA\Get(
-     *      path="/users",
-     *      operationId="getUsersList",
-     *      tags={"Users"},
-     *      summary="Get list of users",
-     *      description="Returns list of users",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *       ),
-     *     )
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -47,20 +39,10 @@ class UserController extends ApiController
     }
 
     /**
-     * @OA\Post(
-     *      path="/users",
-     *      operationId="storeUser",
-     *      tags={"Users"},
-     *      summary="Store new user",
-     *      description="Returns user data",
-     *      @OA\RequestBody(
-     *          required=true,
-     *      ),
-     *      @OA\Response(
-     *          response=201,
-     *          description="Successful operation",
-     *      )
-     * )
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store()
     {
@@ -94,34 +76,10 @@ class UserController extends ApiController
     }
 
     /**
-     * @OA\Get(
-     *      path="/users/{id}",
-     *      operationId="getUserById",
-     *      tags={"Users"},
-     *      summary="Get user information",
-     *      description="Returns user data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="User id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found"
-     *      )
-     * )
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function show(User $user)
     {
@@ -129,41 +87,11 @@ class UserController extends ApiController
     }
 
     /**
-     * @OA\Put(
-     *      path="/users/{id}",
-     *      operationId="updateUser",
-     *      tags={"Users"},
-     *      summary="Update existing user",
-     *      description="Returns updated user data",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="User id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\RequestBody(
-     *          required=true,
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad Request"
-     *      ),
-     *      @OA\Response(
-     *          response=409,
-     *          description="Conflict"
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found"
-     *      )
-     * )
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function update(User $user)
     {
@@ -229,30 +157,10 @@ class UserController extends ApiController
     }
 
     /**
-     * @OA\Delete(
-     *      path="/users/{id}",
-     *      operationId="deleteUser",
-     *      tags={"Users"},
-     *      summary="Delete existing user",
-     *      description="Deletes a user data and returns no content",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="User id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=204,
-     *          description="Successful operation",
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found"
-     *      )
-     * )
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
     {
@@ -261,32 +169,6 @@ class UserController extends ApiController
         return response(null, HttpResponse::HTTP_NO_CONTENT);
     }
 
-    /**
-     * @OA\Get(
-     *      path="/users/verify/{token}",
-     *      operationId="verifyUser",
-     *      tags={"Users"},
-     *      summary="Verify existing user",
-     *      description="Verify a existing user and return a success message",
-     *      @OA\Parameter(
-     *          name="token",
-     *          description="User token",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="string"
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found"
-     *      )
-     * )
-     */
     public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
@@ -299,36 +181,6 @@ class UserController extends ApiController
         return $this->showMessage('The account has been successfully verified');
     }
 
-    /**
-     * @OA\Get(
-     *      path="/users/{id}/resend",
-     *      operationId="resendUserToken",
-     *      tags={"Users"},
-     *      summary="Resend user token",
-     *      description="Resend through email the user token and return a success message",
-     *      @OA\Parameter(
-     *          name="id",
-     *          description="User id",
-     *          required=true,
-     *          in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *      ),
-     *      @OA\Response(
-     *          response=409,
-     *          description="User already veiried",
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found"
-     *      )
-     * )
-     */
     public function resend(User $user)
     {
         if ($user->isVerified()) {
