@@ -31,6 +31,8 @@ class UserController extends ApiController
      */
     public function index()
     {
+        $this->allowedAdminAction();
+
         $users = User::all();
 
         return $this->showAll($users);
@@ -108,6 +110,10 @@ class UserController extends ApiController
             'password' => [
                 'required',
                 'min:6'
+            ],
+            'admin' => [
+                'nullable',
+
             ]
         ]);
 
@@ -132,6 +138,8 @@ class UserController extends ApiController
                     HttpResponse::HTTP_CONFLICT
                 );
             }
+
+            $this->allowedAdminAction();
 
             $user->admin = $validatedData['admin'];
         }
