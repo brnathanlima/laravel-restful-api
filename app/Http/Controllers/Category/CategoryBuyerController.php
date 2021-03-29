@@ -16,6 +16,8 @@ class CategoryBuyerController extends ApiController
 
     public function __invoke(Category $category)
     {
+        $this->allowedAdminAction();
+
         $buyers = $category->products()->whereHas('transactions')
             ->with('transactions.buyer')->get()->pluck('transactions')
             ->collapse()->pluck('buyer')->unique()->values();

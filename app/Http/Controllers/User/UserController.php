@@ -19,6 +19,9 @@ class UserController extends ApiController
         $this->middleware('auth:api')->except(['store', 'resend', 'verify']);
         $this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
         $this->middleware('scope:manage-account')->only(['show', 'update']);
+        $this->middleware('can:view,user')->only('show');
+        $this->middleware('can:update,user')->only('update');
+        $this->middleware('can:delete,user')->only('destroy');
     }
 
     /**
@@ -28,6 +31,8 @@ class UserController extends ApiController
      */
     public function index()
     {
+        $this->allowedAdminAction();
+
         $users = User::all();
 
         return $this->showAll($users);
@@ -105,6 +110,10 @@ class UserController extends ApiController
             'password' => [
                 'required',
                 'min:6'
+            ],
+            'admin' => [
+                'nullable',
+
             ]
         ]);
 
@@ -129,6 +138,8 @@ class UserController extends ApiController
                     HttpResponse::HTTP_CONFLICT
                 );
             }
+
+            $this->allowedAdminAction();
 
             $user->admin = $validatedData['admin'];
         }
@@ -158,7 +169,7 @@ class UserController extends ApiController
         return response(null, HttpResponse::HTTP_NO_CONTENT);
     }
 
-    public function verity($token)
+    public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
 
