@@ -8,9 +8,8 @@ use App\Http\Controllers\Buyer\BuyerTransactionController;
 use App\Http\Controllers\Category\CategoryBuyerController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Category\CategoryProductController;
-use App\Http\Controllers\Category\CategorySellerController as CategoryCategorySellerController;
+use App\Http\Controllers\Category\CategorySellerController;
 use App\Http\Controllers\Category\CategoryTransactionController;
-use App\Http\Controllers\CategorySellerController;
 use App\Http\Controllers\Product\ProductBuyerController;
 use App\Http\Controllers\Product\ProductBuyerTransactionController;
 use App\Http\Controllers\Product\ProductCategoryController;
@@ -25,10 +24,7 @@ use App\Http\Controllers\Transaction\TransactionCategoryController;
 use App\Http\Controllers\Transaction\TransactionController;
 use App\Http\Controllers\Transaction\TransactionSellerController;
 use App\Http\Controllers\User\UserController;
-use App\Models\Product;
-use App\Models\Seller;
 use Illuminate\Support\Facades\Route;
-use OpenApi\LinkExample\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +53,7 @@ Route::prefix('buyers')->group(function () {
 
 Route::apiResource('categories', CategoryController::class);
 Route::prefix('categories')->group(function () {
-    Route::get('{category}/sellers', CategoryCategorySellerController::class)->name('categories.sellers');
+    Route::get('{category}/sellers', CategorySellerController::class)->name('categories.sellers');
     Route::get('{category}/transactions', CategoryTransactionController::class)->name('categories.transactions');
     Route::get('{category}/buyers', CategoryBuyerController::class)->name('categories.buyers');
     Route::get('{category}/products', CategoryProductController::class)->name('categories.products');
