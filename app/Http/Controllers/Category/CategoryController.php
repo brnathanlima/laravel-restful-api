@@ -354,6 +354,6 @@ class CategoryController extends ApiController
 
         $category->delete();
 
-        return $this->showOne($category, 200);
+        return response(null, 204);
     }
 }
