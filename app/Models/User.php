@@ -10,6 +10,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
+/**
+ * @OA\Schema(
+ *     description="User model",
+ *     type="object",
+ *     title="User model"
+ * )
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;

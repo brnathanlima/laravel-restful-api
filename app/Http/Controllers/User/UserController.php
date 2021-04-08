@@ -25,9 +25,82 @@ class UserController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/users",
+     *      operationId="getUsersList",
+     *      tags={"Users"},
+     *      summary="Get list of users",
+     *      description="Returns list of users",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="isVerified",
+     *          description="List all verified users",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="isAdmin",
+     *          description="List all admin users",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="boolean"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="order_by",
+     *          description="User property to sort sort the data by",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="per_page",
+     *          description="How many records to return per page",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page number",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *  )
      */
     public function index()
     {
@@ -39,10 +112,75 @@ class UserController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *      path="/users",
+     *      operationId="storeUser",
+     *      tags={"Users"},
+     *      summary="Store new user",
+     *      description="Returns user data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="name",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="password",
+     *                      type="password",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="passwordConfirmation",
+     *                      type="password",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Created",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="email", type="string", example="The email has already been taken."),
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     * )
      */
     public function store()
     {
@@ -76,10 +214,53 @@ class UserController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/users/{id}",
+     *      operationId="getUserById",
+     *      tags={"Users"},
+     *      summary="Get user information",
+     *      description="Returns user data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      )
+     * )
      */
     public function show(User $user)
     {
@@ -87,11 +268,111 @@ class UserController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @OA\Put(
+     *      path="/users/{id}",
+     *      operationId="updateUser",
+     *      tags={"Users"},
+     *      summary="Update existing user",
+     *      description="Returns updated user data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="application/x-www-form-urlencoded",
+     *              @OA\Schema(
+ *                      required={"email","password", "name", "passwordConfirmation"},
+     *                  @OA\Property(
+     *                      property="name",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="isAdmin",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="password",
+     *                      type="password",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="passwordConfirmation",
+     *                      type="password",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=409,
+     *          description="User already veiried",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Only verified users can modify the admin field."),
+     *              @OA\Property(property="code", type="integer", example="409"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="email", type="string", example="The name field is required."),
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     * )
      */
     public function update(User $user)
     {
@@ -156,10 +437,50 @@ class UserController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *      path="/users/{id}",
+     *      operationId="deleteUser",
+     *      tags={"Users"},
+     *      summary="Delete existing user",
+     *      description="Deletes a user data and returns no content",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      )
+     * )
      */
     public function destroy(User $user)
     {
@@ -168,11 +489,73 @@ class UserController extends ApiController
         return response(null, HttpResponse::HTTP_NO_CONTENT);
     }
 
+    /**
+     * @OA\Get(
+     *      path="/users/me",
+     *      operationId="getAuthenticatedUserInformation",
+     *      tags={"Users"},
+     *      summary="Get user information",
+     *      description="Returns user data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     * )
+     */
     public function me(User $user)
     {
         return $this->showOne(request()->user());
     }
 
+    /**
+     * @OA\Get(
+     *      path="/users/verify/{token}",
+     *      operationId="verifyUser",
+     *      tags={"Users"},
+     *      summary="Verify existing user",
+     *      description="Verify a existing user and return a success message",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="token",
+     *          description="User token",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="The account has been successfully verified"),
+     *              @OA\Property(property="code", type="integer", example="200"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      )
+     * )
+     */
     public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
@@ -185,6 +568,50 @@ class UserController extends ApiController
         return $this->showMessage('The account has been successfully verified');
     }
 
+    /**
+     * @OA\Get(
+     *      path="/users/{id}/resend",
+     *      operationId="resendUserToken",
+     *      tags={"Users"},
+     *      summary="Resend user token",
+     *      description="Resend through email the user token and return a success message",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="The verification token has been resend"),
+     *              @OA\Property(property="code", type="integer", example="200"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=409,
+     *          description="User already veiried",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This user is already verified"),
+     *              @OA\Property(property="code", type="integer", example="409"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      )
+     * )
+     */
     public function resend(User $user)
     {
         if ($user->isVerified()) {
