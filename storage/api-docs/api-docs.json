@@ -607,12 +607,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "passport": []
-                    }
-                ]
+                }
             }
         },
         "/users/{id}/resend": {
@@ -681,12 +676,7 @@
                             "application/json": {}
                         }
                     }
-                },
-                "security": [
-                    {
-                        "passport": []
-                    }
-                ]
+                }
             }
         }
     },

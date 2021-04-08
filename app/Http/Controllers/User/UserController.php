@@ -291,7 +291,7 @@ class UserController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/x-www-form-urlencoded",
      *              @OA\Schema(
- *                      required={"email","password", "name", "passwordConfirmation"},
+     *                      required={"email","password", "name", "passwordConfirmation"},
      *                  @OA\Property(
      *                      property="name",
      *                      type="string",
@@ -527,9 +527,6 @@ class UserController extends ApiController
      *      tags={"Users"},
      *      summary="Verify existing user",
      *      description="Verify a existing user and return a success message",
-     *      security={
-     *          {"passport": {}},
-     *      },
      *      @OA\Parameter(
      *          name="token",
      *          description="User token",
@@ -575,9 +572,6 @@ class UserController extends ApiController
      *      tags={"Users"},
      *      summary="Resend user token",
      *      description="Resend through email the user token and return a success message",
-     *      security={
-     *          {"passport": {}},
-     *      },
      *      @OA\Parameter(
      *          name="id",
      *          description="User id",
