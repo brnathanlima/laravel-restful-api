@@ -394,7 +394,7 @@
                         }
                     },
                     "409": {
-                        "description": "User already veiried",
+                        "description": "Returned when trying give admin role to an unverified user.",
                         "content": {
                             "application/json": {
                                 "schema": {

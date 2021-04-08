@@ -345,7 +345,7 @@ class UserController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=409,
-     *          description="User already veiried",
+     *          description="Returned when trying give admin role to an unverified user.",
      *          @OA\JsonContent(
      *              @OA\Property(property="message", type="string", example="Only verified users can modify the admin field."),
      *              @OA\Property(property="code", type="integer", example="409"),
