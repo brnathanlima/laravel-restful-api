@@ -74,6 +74,7 @@ class SellerProductController extends ApiController
         ]);
 
         $validatedData['image'] = request()->file('image')->store('');
+        $validatedData['status'] = Product::UNAVAILABLE_PRODUCT;
         $validatedData['seller_id'] = $seller->id;
 
         $product = $seller->products()->create($validatedData);
