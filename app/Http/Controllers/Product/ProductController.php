@@ -99,7 +99,7 @@ class ProductController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/products/{id}",
+     *      path="/products/{product}",
      *      operationId="getProductById",
      *      tags={"Products"},
      *      summary="Get product information",
@@ -108,7 +108,7 @@ class ProductController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="product",
      *          description="Product id",
      *          required=true,
      *          in="path",
