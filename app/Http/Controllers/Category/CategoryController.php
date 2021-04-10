@@ -18,9 +18,71 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/categories",
+     *      operationId="getCategoriesList",
+     *      tags={"Categories"},
+     *      summary="Get list of categories",
+     *      description="Returns list of categories",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="order_by",
+     *          description="Category property to sort sort the data by",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="per_page",
+     *          description="How many records to return per page",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page number",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when category is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when category is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     *  )
      */
     public function index()
     {
@@ -30,10 +92,74 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *      path="/categories",
+     *      operationId="storeCategory",
+     *      tags={"Categories"},
+     *      summary="Store new category",
+     *      description="Returns category data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="title",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="details",
+     *                      type="string",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Created",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when category is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when category is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="details", type="string", example="The email has already been taken."),
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function store()
     {
@@ -50,10 +176,60 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/categories/{category}",
+     *      operationId="getCategoryById",
+     *      tags={"Categories"},
+     *      summary="Get category information",
+     *      description="Returns category data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="category",
+     *          description="Category id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when category is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when category is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function show(Category $category)
     {
@@ -61,11 +237,84 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @OA\Put(
+     *      path="/categories/{category}",
+     *      operationId="updateCategory",
+     *      tags={"Categories"},
+     *      summary="Update existing category",
+     *      description="Returns updated category data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="category",
+     *          description="Category id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="application/x-www-form-urlencoded",
+     *              @OA\Schema(
+     *                  required={"title", "details"},
+     *                  @OA\Property(
+     *                      property="title",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="details",
+     *                      type="string",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when category is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when category is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function update(Category $category)
     {
@@ -82,10 +331,57 @@ class CategoryController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *      path="/categories/{category}",
+     *      operationId="deleteCategor",
+     *      tags={"Categories"},
+     *      summary="Delete existing category",
+     *      description="Deletes a category data and returns no content",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="category",
+     *          description="Category id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function destroy(Category $category)
     {
@@ -93,6 +389,6 @@ class CategoryController extends ApiController
 
         $category->delete();
 
-        return $this->showOne($category, 200);
+        return response(null, 204);
     }
 }

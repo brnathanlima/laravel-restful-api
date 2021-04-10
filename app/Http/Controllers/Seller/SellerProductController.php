@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Seller;
-use App\Models\User;
 use App\Transformers\ProductTransformer;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class SellerProductController extends ApiController
 {
@@ -28,14 +25,110 @@ class SellerProductController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/sellers/{seller}/products",
+     *      operationId="getSellerProductsList",
+     *      tags={"Sellers"},
+     *      summary="Get list of seller's products",
+     *      description="Returns list of seller's products",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="seller",
+     *          description="Seller id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="stock",
+     *          description="List all seller's products with the specified stock amount",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="situation",
+     *          description="List all seller's products with the specified situation",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="order_by",
+     *          description="Transaction property to sort sort the data by",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="per_page",
+     *          description="How many records to return per page",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page number",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when seller is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when seller is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     *  )
      */
     public function index(Seller $seller)
     {
         if (!(request()->user()->tokenCan('read-general') || request()->user()->tokenCan('manage-products'))) {
-            throw new AuthorizationException("Invalide scope(s)");
+            throw new AuthorizationException('Invalide scope(s)');
         }
 
         $products = $seller->products;
@@ -44,10 +137,98 @@ class SellerProductController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *      path="/sellers/{seller}/products",
+     *      operationId="storeSellerProduct",
+     *      tags={"Sellers"},
+     *      summary="Store new seller's product",
+     *      description="Returns seller's product data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="seller",
+     *          description="Seller id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="title",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="details",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="stock",
+     *                      type="integer",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="image",
+     *                      type="file",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Created",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="email", type="string", example="The email has already been taken."),
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function store(Seller $seller)
     {
@@ -74,19 +255,146 @@ class SellerProductController extends ApiController
         ]);
 
         $validatedData['image'] = request()->file('image')->store('');
+        $validatedData['status'] = Product::UNAVAILABLE_PRODUCT;
         $validatedData['seller_id'] = $seller->id;
 
         $product = $seller->products()->create($validatedData);
 
-        return $this->showOne($product);
+        return $this->showOne($product, 201);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Seller  $seller
-     * @return \Illuminate\Http\Response
+     * @OA\POST(
+     *      path="/sellers/{seller}/products/{product}",
+     *      operationId="upadateSellersProduct",
+     *      tags={"Sellers"},
+     *      summary="Update a seller's product",
+     *      description="Returns seller's product updated data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="seller",
+     *          description="Seller id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="product",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="_method",
+     *          description="Method",
+     *          required=true,
+     *          in="query",
+     *          example="PUT",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="title",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="details",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="stock",
+     *                      type="integer",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="situation",
+     *                      type="string",
+     *                  ),
+     *                  @OA\Property(
+     *                      property="image",
+     *                      type="file",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful Operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=409,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *                      @OA\Property(property="error", type="string", example="An active product must have at least one category"),
+     *                      @OA\Property(property="code", type="integer", example="409"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *              oneOf={
+     *                  @OA\Property(
+     *                      @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *                      @OA\Property(
+     *                          property="errors",
+     *                          type="array",
+     *                          @OA\Items(
+     *                              @OA\Property(property="email", type="string", example="The email has already been taken."),
+     *                          ),
+     *                      )
+     *                  ),
+     *                  @OA\Property(
+     *                      @OA\Property(property="message", type="string", example="The specified seller is not the actual seller of the product"),
+     *                      @OA\Property(property="code", type="integer", example="422"),
+     *                  ),
+     *              }
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function update(Seller $seller, Product $product)
     {
@@ -136,10 +444,74 @@ class SellerProductController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Seller  $seller
-     * @return \Illuminate\Http\Response
+     * @OA\DELETE(
+     *      path="/sellers/{seller}/products/{product}",
+     *      operationId="deleteSellersProduct",
+     *      tags={"Sellers"},
+     *      summary="Deletes a seller's product and return no content",
+     *      description="Return",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="seller",
+     *          description="Seller id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="product",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Successful operation",
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *                      @OA\Property(property="error", type="string", example="The specified seller is not the actual seller of the product"),
+     *                      @OA\Property(property="code", type="integer", example="422"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function destroy(Seller $seller, Product $product)
     {

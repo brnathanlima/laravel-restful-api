@@ -19,9 +19,87 @@ class ProductCategoryController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *      path="/products/{product}/categories",
+     *      operationId="getProductCategoriessList",
+     *      tags={"Products"},
+     *      summary="Get list of product's categories",
+     *      description="Returns list of product's categories",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="product",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="order_by",
+     *          description="Transaction property to sort sort the data by",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="per_page",
+     *          description="How many records to return per page",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="page",
+     *          description="Page number",
+     *          required=false,
+     *          in="query",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when category is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when category is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     *  )
      */
     public function index(Product $product)
     {
@@ -31,11 +109,69 @@ class ProductCategoryController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @OA\PUT(
+     *      path="/products/{product}/categories/{category}",
+     *      operationId="attachProductToCategory",
+     *      tags={"Products"},
+     *      summary="Attaches a product to a category",
+     *      description="Returns product's attached categories data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="product",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="category",
+     *          description="Category id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful Operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function update(Product $product, Category $category)
     {
@@ -45,15 +181,73 @@ class ProductCategoryController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @OA\DELETE(
+     *      path="/products/{product}/categories/{category}",
+     *      operationId="detatchProductFromCategory",
+     *      tags={"Products"},
+     *      summary="Detatches a product's from a category and returns the remaining ones",
+     *      description="Return",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="product",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="category",
+     *          description="Category id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent()
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\JsonContent(
+     *                      @OA\Property(property="error", type="string", example="The specified category is not a category of this product"),
+     *                      @OA\Property(property="code", type="integer", example="404"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
+     * )
      */
     public function destroy(Product $product, Category $category)
     {
         if (!$product->categories()->find($category->id)) {
-            return response("The specified category is not a category of this product", 404);
+            return $this->errorResponse('The specified category is not a category of this product', 404);
         }
 
         $product->categories()->detach($category->id);

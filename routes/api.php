@@ -81,6 +81,3 @@ Route::prefix('users')->group(function () {
     Route::get('me', [UserController::class, 'me'])->name('me');
 });
 Route::apiResource('users', UserController::class);
-
-Route::post('oauth/token', [Laravel\Passport\Http\Controllers\AccessTokenController::class, 'issueToken'])
-    ->name('passport.token');
