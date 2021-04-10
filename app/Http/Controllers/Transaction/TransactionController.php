@@ -96,7 +96,7 @@ class TransactionController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/transactions/{id}",
+     *      path="/transactions/{transaction}",
      *      operationId="getTransactionById",
      *      tags={"Transactions"},
      *      summary="Get transaction information",
@@ -105,7 +105,7 @@ class TransactionController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="transaction",
      *          description="Transaction id",
      *          required=true,
      *          in="path",

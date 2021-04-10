@@ -3434,7 +3434,7 @@
                 ]
             }
         },
-        "/transactions/{id}": {
+        "/transactions/{transaction}": {
             "get": {
                 "tags": [
                     "Transactions"
@@ -3444,7 +3444,7 @@
                 "operationId": "getTransactionById",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "transaction",
                         "in": "path",
                         "description": "Transaction id",
                         "required": true,
