@@ -20,7 +20,7 @@ class SellerTransactionController extends ApiController
      * @OA\Get(
      *      path="/sellers/{seller}/transactions",
      *      operationId="getSellerTransactionsList",
-     *      tags={"Seller's transactions"},
+     *      tags={"Sellers"},
      *      summary="Get list of seller's transactions",
      *      description="Returns list of seller's transactions",
      *      security={

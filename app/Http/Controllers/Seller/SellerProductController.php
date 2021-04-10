@@ -28,7 +28,7 @@ class SellerProductController extends ApiController
      * @OA\Get(
      *      path="/sellers/{seller}/products",
      *      operationId="getSellerTransactionsList",
-     *      tags={"Seller's products"},
+     *      tags={"Sellers"},
      *      summary="Get list of seller's products",
      *      description="Returns list of seller's products",
      *      security={
@@ -133,7 +133,7 @@ class SellerProductController extends ApiController
      * @OA\Post(
      *      path="/sellers/{seller}/products",
      *      operationId="storeSellerProduct",
-     *      tags={"Seller's products"},
+     *      tags={"Sellers"},
      *      summary="Store new seller's product",
      *      description="Returns seller's product data",
      *      security={
@@ -246,7 +246,7 @@ class SellerProductController extends ApiController
      * @OA\POST(
      *      path="/sellers/{seller}/products/{product}",
      *      operationId="upadateSellersProduct",
-     *      tags={"Seller's products"},
+     *      tags={"Sellers"},
      *      summary="Update a seller's product",
      *      description="Returns seller's product updated data",
      *      security={
@@ -419,7 +419,7 @@ class SellerProductController extends ApiController
      * @OA\DELETE(
      *      path="/sellers/{seller}/products/{product}",
      *      operationId="deleteSellersProduct",
-     *      tags={"Seller's products"},
+     *      tags={"Sellers"},
      *      summary="Deletes a seller's product and return no content",
      *      description="Return",
      *      security={

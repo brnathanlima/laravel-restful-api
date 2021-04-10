@@ -17,7 +17,7 @@ class BuyerSellerController extends ApiController
      * @OA\Get(
      *      path="/buyers/{buyer}/sellers",
      *      operationId="getBuyerTransactionsList",
-     *      tags={"Buyer's sellers"},
+     *      tags={"Buyers"},
      *      summary="Get list of buyer's sellers",
      *      description="Returns list of buyer's sellers",
      *      security={

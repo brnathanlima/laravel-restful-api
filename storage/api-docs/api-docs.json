@@ -22,7 +22,7 @@
         "/buyers/{buyer}/categories": {
             "get": {
                 "tags": [
-                    "Buyer's categories"
+                    "Buyers"
                 ],
                 "summary": "Get list of buyer's categories",
                 "description": "Returns list of buyer's categories",
@@ -286,7 +286,7 @@
         "/buyers/{buyer}/products": {
             "get": {
                 "tags": [
-                    "Buyer's products"
+                    "Buyers"
                 ],
                 "summary": "Get list of buyer's products",
                 "description": "Returns list of buyer's products",
@@ -403,7 +403,7 @@
         "/buyers/{buyer}/sellers": {
             "get": {
                 "tags": [
-                    "Buyer's sellers"
+                    "Buyers"
                 ],
                 "summary": "Get list of buyer's sellers",
                 "description": "Returns list of buyer's sellers",
@@ -502,7 +502,7 @@
         "/buyers/{buyer}/transactions": {
             "get": {
                 "tags": [
-                    "Buyer's transactions"
+                    "Buyers"
                 ],
                 "summary": "Get list of buyer's transactions",
                 "description": "Returns list of buyer's transactions",
@@ -2260,7 +2260,7 @@
         "/sellers/{seller}/buyers": {
             "get": {
                 "tags": [
-                    "Seller's buyers"
+                    "Sellers"
                 ],
                 "summary": "Get list of seller's buyers",
                 "description": "Returns list of seller's buyers",
@@ -2359,7 +2359,7 @@
         "/sellers/{seller}/categories": {
             "get": {
                 "tags": [
-                    "Seller's categories"
+                    "Sellers"
                 ],
                 "summary": "Get list of seller's categories",
                 "description": "Returns list of seller's categories",
@@ -2623,7 +2623,7 @@
         "/sellers/{seller}/products": {
             "get": {
                 "tags": [
-                    "Seller's products"
+                    "Sellers"
                 ],
                 "summary": "Get list of seller's products",
                 "description": "Returns list of seller's products",
@@ -2738,7 +2738,7 @@
             },
             "post": {
                 "tags": [
-                    "Seller's products"
+                    "Sellers"
                 ],
                 "summary": "Store new seller's product",
                 "description": "Returns seller's product data",
@@ -2856,7 +2856,7 @@
         "/sellers/{seller}/products/{product}": {
             "post": {
                 "tags": [
-                    "Seller's products"
+                    "Sellers"
                 ],
                 "summary": "Update a seller's product",
                 "description": "Returns seller's product updated data",
@@ -3039,7 +3039,7 @@
             },
             "delete": {
                 "tags": [
-                    "Seller's products"
+                    "Sellers"
                 ],
                 "summary": "Deletes a seller's product and return no content",
                 "description": "Return",
@@ -3137,7 +3137,7 @@
         "/sellers/{seller}/transactions": {
             "get": {
                 "tags": [
-                    "Seller's transactions"
+                    "Sellers"
                 ],
                 "summary": "Get list of seller's transactions",
                 "description": "Returns list of seller's transactions",
