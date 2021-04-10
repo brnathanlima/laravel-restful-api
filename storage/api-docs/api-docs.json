@@ -4233,14 +4233,13 @@
             }
         }
     },
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API Endpoints of Users"
+        }
+    ],
     "components": {
-        "schemas": {
-            "User": {
-                "title": "User model",
-                "description": "User model",
-                "type": "object"
-            }
-        },
         "securitySchemes": {
             "passport": {
                 "type": "oauth2",
@@ -4262,12 +4261,6 @@
             }
         }
     },
-    "tags": [
-        {
-            "name": "Users",
-            "description": "API Endpoints of Users"
-        }
-    ],
     "security": [
         []
     ]
