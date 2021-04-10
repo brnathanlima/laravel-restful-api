@@ -1445,7 +1445,7 @@
                 ],
                 "summary": "Get list of product's buyers",
                 "description": "Returns list of product's buyers",
-                "operationId": "getProductTransactionsList",
+                "operationId": "getProductBuyersList",
                 "parameters": [
                     {
                         "name": "product",
@@ -1707,7 +1707,7 @@
                 ],
                 "summary": "Get list of product's categories",
                 "description": "Returns list of product's categories",
-                "operationId": "getProductTransactionsList",
+                "operationId": "getProductCategoriessList",
                 "parameters": [
                     {
                         "name": "product",

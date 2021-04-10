@@ -21,7 +21,7 @@ class ProductCategoryController extends ApiController
     /**
      * @OA\Get(
      *      path="/products/{product}/categories",
-     *      operationId="getProductTransactionsList",
+     *      operationId="getProductCategoriessList",
      *      tags={"Products"},
      *      summary="Get list of product's categories",
      *      description="Returns list of product's categories",
