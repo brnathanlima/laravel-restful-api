@@ -19,7 +19,7 @@ class SellerCategoryController extends ApiController
     /**
      * @OA\Get(
      *      path="/sellers/{seller}/categories",
-     *      operationId="getSellerTransactionsList",
+     *      operationId="getSellerCategoriesList",
      *      tags={"Sellers"},
      *      summary="Get list of seller's categories",
      *      description="Returns list of seller's categories",

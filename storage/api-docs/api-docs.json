@@ -2264,7 +2264,7 @@
                 ],
                 "summary": "Get list of seller's buyers",
                 "description": "Returns list of seller's buyers",
-                "operationId": "getSellerTransactionsList",
+                "operationId": "getSellerBuyersList",
                 "parameters": [
                     {
                         "name": "seller",
@@ -2363,7 +2363,7 @@
                 ],
                 "summary": "Get list of seller's categories",
                 "description": "Returns list of seller's categories",
-                "operationId": "getSellerTransactionsList",
+                "operationId": "getSellerCategoriesList",
                 "parameters": [
                     {
                         "name": "seller",
@@ -2627,7 +2627,7 @@
                 ],
                 "summary": "Get list of seller's products",
                 "description": "Returns list of seller's products",
-                "operationId": "getSellerTransactionsList",
+                "operationId": "getSellerProductsList",
                 "parameters": [
                     {
                         "name": "seller",

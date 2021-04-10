@@ -27,7 +27,7 @@ class SellerProductController extends ApiController
     /**
      * @OA\Get(
      *      path="/sellers/{seller}/products",
-     *      operationId="getSellerTransactionsList",
+     *      operationId="getSellerProductsList",
      *      tags={"Sellers"},
      *      summary="Get list of seller's products",
      *      description="Returns list of seller's products",
