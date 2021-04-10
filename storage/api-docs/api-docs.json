@@ -3744,14 +3744,14 @@
                         }
                     },
                     "422": {
-                        "description": "Returns when there's some validation trouble",
+                        "description": "Returns when there's some valuseration trouble",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
+                                            "example": "The given data was invaluser."
                                         },
                                         "errors": {
                                             "type": "array",
@@ -3779,7 +3779,7 @@
                 ]
             }
         },
-        "/users/{id}": {
+        "/users/{user}": {
             "get": {
                 "tags": [
                     "Users"
@@ -3789,7 +3789,7 @@
                 "operationId": "getUserById",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "user",
                         "in": "path",
                         "description": "User id",
                         "required": true,
@@ -3859,7 +3859,7 @@
                 "operationId": "updateUser",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "user",
                         "in": "path",
                         "description": "User id",
                         "required": true,
@@ -3973,14 +3973,14 @@
                         }
                     },
                     "422": {
-                        "description": "Returns when there's some validation trouble",
+                        "description": "Returns when there's some valuseration trouble",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
+                                            "example": "The given data was invaluser."
                                         },
                                         "errors": {
                                             "type": "array",
@@ -4016,7 +4016,7 @@
                 "operationId": "deleteUser",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "user",
                         "in": "path",
                         "description": "User id",
                         "required": true,
@@ -4163,7 +4163,7 @@
                 }
             }
         },
-        "/users/{id}/resend": {
+        "/users/{user}/resend": {
             "get": {
                 "tags": [
                     "Users"
@@ -4173,7 +4173,7 @@
                 "operationId": "resendUserToken",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "user",
                         "in": "path",
                         "description": "User id",
                         "required": true,

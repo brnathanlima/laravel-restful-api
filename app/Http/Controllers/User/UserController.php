@@ -168,9 +168,9 @@ class UserController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=422,
-     *          description="Returns when there's some validation trouble",
+     *          description="Returns when there's some valuseration trouble",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *              @OA\Property(property="message", type="string", example="The given data was invaluser."),
      *              @OA\Property(
      *                  property="errors",
      *                  type="array",
@@ -215,7 +215,7 @@ class UserController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/users/{id}",
+     *      path="/users/{user}",
      *      operationId="getUserById",
      *      tags={"Users"},
      *      summary="Get user information",
@@ -224,7 +224,7 @@ class UserController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="user",
      *          description="User id",
      *          required=true,
      *          in="path",
@@ -269,7 +269,7 @@ class UserController extends ApiController
 
     /**
      * @OA\Put(
-     *      path="/users/{id}",
+     *      path="/users/{user}",
      *      operationId="updateUser",
      *      tags={"Users"},
      *      summary="Update existing user",
@@ -278,7 +278,7 @@ class UserController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="user",
      *          description="User id",
      *          required=true,
      *          in="path",
@@ -360,9 +360,9 @@ class UserController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=422,
-     *          description="Returns when there's some validation trouble",
+     *          description="Returns when there's some valuseration trouble",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *              @OA\Property(property="message", type="string", example="The given data was invaluser."),
      *              @OA\Property(
      *                  property="errors",
      *                  type="array",
@@ -438,7 +438,7 @@ class UserController extends ApiController
 
     /**
      * @OA\Delete(
-     *      path="/users/{id}",
+     *      path="/users/{user}",
      *      operationId="deleteUser",
      *      tags={"Users"},
      *      summary="Delete existing user",
@@ -447,7 +447,7 @@ class UserController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="user",
      *          description="User id",
      *          required=true,
      *          in="path",
@@ -567,13 +567,13 @@ class UserController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/users/{id}/resend",
+     *      path="/users/{user}/resend",
      *      operationId="resendUserToken",
      *      tags={"Users"},
      *      summary="Resend user token",
      *      description="Resend through email the user token and return a success message",
      *      @OA\Parameter(
-     *          name="id",
+     *          name="user",
      *          description="User id",
      *          required=true,
      *          in="path",
