@@ -247,7 +247,7 @@ class ProductCategoryController extends ApiController
     public function destroy(Product $product, Category $category)
     {
         if (!$product->categories()->find($category->id)) {
-            return response('The specified category is not a category of this product', 404);
+            return $this->errorResponse('The specified category is not a category of this product', 404);
         }
 
         $product->categories()->detach($category->id);
