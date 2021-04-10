@@ -2963,30 +2963,69 @@
                             "application/json": {}
                         }
                     },
-                    "422": {
+                    "409": {
                         "description": "Returns when there's some validation trouble",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
+                                            "example": "An active product must have at least one category"
                                         },
-                                        "errors": {
-                                            "type": "array",
-                                            "items": {
-                                                "properties": {
-                                                    "email": {
-                                                        "type": "string",
-                                                        "example": "The email has already been taken."
-                                                    }
-                                                },
-                                                "type": "object"
-                                            }
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "409"
                                         }
                                     },
                                     "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Returns when there's some validation trouble",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "The given data was invalid."
+                                                },
+                                                "errors": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "email": {
+                                                                "type": "string",
+                                                                "example": "The email has already been taken."
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "The specified seller is not the actual seller of the product"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "422"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
                                 }
                             }
                         }

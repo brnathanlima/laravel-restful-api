@@ -337,17 +337,33 @@ class SellerProductController extends ApiController
      *          )
      *      ),
      *      @OA\Response(
+     *          response=409,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *                      @OA\Property(property="error", type="string", example="An active product must have at least one category"),
+     *                      @OA\Property(property="code", type="integer", example="409"),
+     *          )
+     *      ),
+     *      @OA\Response(
      *          response=422,
      *          description="Returns when there's some validation trouble",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *              @OA\Property(
-     *                  property="errors",
-     *                  type="array",
-     *                  @OA\Items(
-     *                      @OA\Property(property="email", type="string", example="The email has already been taken."),
+     *              oneOf={
+     *                  @OA\Property(
+     *                      @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *                      @OA\Property(
+     *                          property="errors",
+     *                          type="array",
+     *                          @OA\Items(
+     *                              @OA\Property(property="email", type="string", example="The email has already been taken."),
+     *                          ),
+     *                      )
      *                  ),
-     *              )
+     *                  @OA\Property(
+     *                      @OA\Property(property="message", type="string", example="The specified seller is not the actual seller of the product"),
+     *                      @OA\Property(property="code", type="integer", example="422"),
+     *                  ),
+     *              }
      *          )
      *      ),
      * )
