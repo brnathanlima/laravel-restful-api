@@ -16,7 +16,7 @@ class CategoryBuyerController extends ApiController
     /**
      * @OA\Get(
      *      path="/categories/{category}/buyers",
-     *      operationId="getCategoryTransactionsList",
+     *      operationId="getCategoryBuyers",
      *      tags={"Categories"},
      *      summary="Get list of category's buyers",
      *      description="Returns list of category's buyers",

@@ -614,7 +614,7 @@
                 ],
                 "summary": "Get list of category's buyers",
                 "description": "Returns list of category's buyers",
-                "operationId": "getCategoryTransactionsList",
+                "operationId": "getCategoryBuyers",
                 "parameters": [
                     {
                         "name": "category",
