@@ -86,7 +86,14 @@ class ProductBuyerController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      *  )
      */
     public function __invoke(Product $product)

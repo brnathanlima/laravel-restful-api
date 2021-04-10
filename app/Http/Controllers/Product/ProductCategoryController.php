@@ -91,7 +91,14 @@ class ProductCategoryController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      *  )
      */
     public function index(Product $product)
@@ -157,6 +164,13 @@ class ProductCategoryController extends ApiController
      *              mediaType="application/json",
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function update(Product $product, Category $category)
@@ -219,6 +233,13 @@ class ProductCategoryController extends ApiController
      *          @OA\JsonContent(
      *                      @OA\Property(property="error", type="string", example="The specified category is not a category of this product"),
      *                      @OA\Property(property="code", type="integer", example="404"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
      *          )
      *      ),
      * )

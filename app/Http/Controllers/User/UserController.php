@@ -100,6 +100,13 @@ class UserController extends ApiController
      *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      *  )
      */
     public function index()
@@ -178,6 +185,13 @@ class UserController extends ApiController
      *                      @OA\Property(property="email", type="string", example="The email has already been taken."),
      *                  ),
      *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
      *          )
      *      ),
      * )
@@ -259,7 +273,14 @@ class UserController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function show(User $user)
@@ -372,6 +393,13 @@ class UserController extends ApiController
      *              )
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function update(User $user)
@@ -479,7 +507,14 @@ class UserController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function destroy(User $user)
@@ -511,6 +546,13 @@ class UserController extends ApiController
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
      *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
      *          )
      *      ),
      * )
@@ -550,7 +592,14 @@ class UserController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function verify($token)
@@ -603,7 +652,14 @@ class UserController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function resend(User $user)

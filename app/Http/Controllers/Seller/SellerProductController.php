@@ -115,7 +115,14 @@ class SellerProductController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      *  )
      */
     public function index(Seller $seller)
@@ -194,6 +201,13 @@ class SellerProductController extends ApiController
      *          )
      *      ),
      *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
      *          response=422,
      *          description="Returns when there's some validation trouble",
      *          @OA\JsonContent(
@@ -205,6 +219,13 @@ class SellerProductController extends ApiController
      *                      @OA\Property(property="email", type="string", example="The email has already been taken."),
      *                  ),
      *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
      *          )
      *      ),
      * )
@@ -366,6 +387,13 @@ class SellerProductController extends ApiController
      *              }
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function update(Seller $seller, Product $product)
@@ -474,6 +502,13 @@ class SellerProductController extends ApiController
      *          @OA\JsonContent(
      *                      @OA\Property(property="error", type="string", example="The specified seller is not the actual seller of the product"),
      *                      @OA\Property(property="code", type="integer", example="422"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
      *          )
      *      ),
      * )

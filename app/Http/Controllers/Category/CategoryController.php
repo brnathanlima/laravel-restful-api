@@ -75,6 +75,13 @@ class CategoryController extends ApiController
      *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      *  )
      */
     public function index()
@@ -145,6 +152,13 @@ class CategoryController extends ApiController
      *              )
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function store()
@@ -207,7 +221,14 @@ class CategoryController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function show(Category $category)
@@ -286,6 +307,13 @@ class CategoryController extends ApiController
      *              mediaType="application/json",
      *          )
      *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function update(Category $category)
@@ -345,7 +373,14 @@ class CategoryController extends ApiController
      *          @OA\MediaType(
      *              mediaType="application/json",
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=500,
+     *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *          )
+     *      ),
      * )
      */
     public function destroy(Category $category)

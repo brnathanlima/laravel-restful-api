@@ -109,6 +109,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -202,6 +218,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -273,6 +305,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -391,6 +439,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -489,6 +553,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -598,6 +678,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -697,6 +793,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -775,6 +887,22 @@
                                         "message": {
                                             "type": "string",
                                             "example": "This action is unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -880,6 +1008,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -951,6 +1095,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -1050,6 +1210,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -1116,6 +1292,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -1228,6 +1420,28 @@
                                 }
                             }
                         }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -1315,6 +1529,28 @@
                                         "message": {
                                             "type": "string",
                                             "example": "This action is unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -1429,6 +1665,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -1527,6 +1779,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -1691,6 +1959,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -1790,6 +2074,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -1870,6 +2170,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -1960,6 +2276,22 @@
                                         "code": {
                                             "type": "integer",
                                             "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -2068,6 +2400,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -2139,6 +2487,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -2248,6 +2612,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -2346,6 +2726,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -2446,6 +2842,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -2539,6 +2951,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -2610,6 +3038,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -2728,6 +3172,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -2817,6 +3277,12 @@
                             }
                         }
                     },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
                     "422": {
                         "description": "Returns when there's some validation trouble",
                         "content": {
@@ -2838,6 +3304,22 @@
                                                 },
                                                 "type": "object"
                                             }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -3029,6 +3511,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -3119,6 +3617,22 @@
                                         "code": {
                                             "type": "integer",
                                             "example": "422"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -3233,6 +3747,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -3332,6 +3862,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -3425,6 +3971,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -3497,6 +4059,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -3557,6 +4135,28 @@
                                         "message": {
                                             "type": "string",
                                             "example": "This action is unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -3659,6 +4259,22 @@
                                         "message": {
                                             "type": "string",
                                             "example": "This action is unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -3770,6 +4386,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -3841,6 +4473,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 },
@@ -3999,6 +4647,22 @@
                                 }
                             }
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -4066,6 +4730,22 @@
                         "content": {
                             "application/json": {}
                         }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 },
                 "security": [
@@ -4099,6 +4779,22 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
                                         }
                                     },
                                     "type": "object"
@@ -4158,6 +4854,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
@@ -4227,6 +4939,22 @@
                         "description": "Resource Not Found",
                         "content": {
                             "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     }
                 }
