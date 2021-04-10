@@ -260,7 +260,7 @@ class SellerProductController extends ApiController
 
         $product = $seller->products()->create($validatedData);
 
-        return $this->showOne($product);
+        return $this->showOne($product, 201);
     }
 
     /**
