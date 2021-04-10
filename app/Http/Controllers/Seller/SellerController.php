@@ -95,7 +95,7 @@ class SellerController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/sellers/{id}",
+     *      path="/sellers/{seller}",
      *      operationId="getSellerById",
      *      tags={"Sellers"},
      *      summary="Get seller information",
@@ -104,7 +104,7 @@ class SellerController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="seller",
      *          description="Seller id",
      *          required=true,
      *          in="path",

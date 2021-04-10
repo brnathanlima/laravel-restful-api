@@ -2548,7 +2548,7 @@
                 ]
             }
         },
-        "/sellers/{id}": {
+        "/sellers/{seller}": {
             "get": {
                 "tags": [
                     "Sellers"
@@ -2558,7 +2558,7 @@
                 "operationId": "getSellerById",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "seller",
                         "in": "path",
                         "description": "Seller id",
                         "required": true,
