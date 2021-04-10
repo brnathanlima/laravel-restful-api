@@ -95,7 +95,7 @@ class BuyerController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/buyers/{id}",
+     *      path="/buyers/{buyer}",
      *      operationId="getBuyerById",
      *      tags={"Buyers"},
      *      summary="Get buyer information",
@@ -104,7 +104,7 @@ class BuyerController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="buyer",
      *          description="Buyer id",
      *          required=true,
      *          in="path",

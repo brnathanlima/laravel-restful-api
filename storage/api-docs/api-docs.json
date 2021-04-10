@@ -26,7 +26,7 @@
                 ],
                 "summary": "Get list of buyer's categories",
                 "description": "Returns list of buyer's categories",
-                "operationId": "getBuyerTransactionsList",
+                "operationId": "getBuyerCategoriesList",
                 "parameters": [
                     {
                         "name": "buyer",
@@ -211,7 +211,7 @@
                 ]
             }
         },
-        "/buyers/{id}": {
+        "/buyers/{buyer}": {
             "get": {
                 "tags": [
                     "Buyers"
@@ -221,7 +221,7 @@
                 "operationId": "getBuyerById",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "buyer",
                         "in": "path",
                         "description": "Buyer id",
                         "required": true,
@@ -290,7 +290,7 @@
                 ],
                 "summary": "Get list of buyer's products",
                 "description": "Returns list of buyer's products",
-                "operationId": "getBuyerTransactionsList",
+                "operationId": "getBuyerProductsList",
                 "parameters": [
                     {
                         "name": "buyer",
@@ -407,7 +407,7 @@
                 ],
                 "summary": "Get list of buyer's sellers",
                 "description": "Returns list of buyer's sellers",
-                "operationId": "getBuyerTransactionsList",
+                "operationId": "getBuyerSellersList",
                 "parameters": [
                     {
                         "name": "buyer",
