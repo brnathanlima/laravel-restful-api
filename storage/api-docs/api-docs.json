@@ -889,7 +889,7 @@
                 ]
             }
         },
-        "/categories/{id}": {
+        "/categories/{category}": {
             "get": {
                 "tags": [
                     "Categories"
@@ -899,7 +899,7 @@
                 "operationId": "getCategoryById",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "category",
                         "in": "path",
                         "description": "Category id",
                         "required": true,
@@ -969,7 +969,7 @@
                 "operationId": "updateCategory",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "category",
                         "in": "path",
                         "description": "Category id",
                         "required": true,
@@ -1067,7 +1067,7 @@
                 "operationId": "deleteCategor",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "category",
                         "in": "path",
                         "description": "Category id",
                         "required": true,

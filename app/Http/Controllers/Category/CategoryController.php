@@ -163,7 +163,7 @@ class CategoryController extends ApiController
 
     /**
      * @OA\Get(
-     *      path="/categories/{id}",
+     *      path="/categories/{category}",
      *      operationId="getCategoryById",
      *      tags={"Categories"},
      *      summary="Get category information",
@@ -172,7 +172,7 @@ class CategoryController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="category",
      *          description="Category id",
      *          required=true,
      *          in="path",
@@ -217,7 +217,7 @@ class CategoryController extends ApiController
 
     /**
      * @OA\Put(
-     *      path="/categories/{id}",
+     *      path="/categories/{category}",
      *      operationId="updateCategory",
      *      tags={"Categories"},
      *      summary="Update existing category",
@@ -226,7 +226,7 @@ class CategoryController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="category",
      *          description="Category id",
      *          required=true,
      *          in="path",
@@ -304,7 +304,7 @@ class CategoryController extends ApiController
 
     /**
      * @OA\Delete(
-     *      path="/categories/{id}",
+     *      path="/categories/{category}",
      *      operationId="deleteCategor",
      *      tags={"Categories"},
      *      summary="Delete existing category",
@@ -313,7 +313,7 @@ class CategoryController extends ApiController
      *          {"passport": {}},
      *      },
      *      @OA\Parameter(
-     *          name="id",
+     *          name="category",
      *          description="Category id",
      *          required=true,
      *          in="path",
