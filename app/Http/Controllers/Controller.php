@@ -13,7 +13,7 @@ class Controller extends BaseController
 
     /**
      * @OA\Info(
-     *      version="1.9.0",
+     *      version="1.11.0",
      *      title="Laravel Restful API",
      *      description="This API was concepted during classes of the course 'RESTful API with Laravel: Build a Real API with Laravel' that I took from the Udemy platform.",
      *      @OA\Contact(
