@@ -10,6 +10,11 @@ class ApiController extends Controller
 {
     use ApiResponser;
 
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function allowedAdminAction()
     {
         if (Gate::denies('admin-action')) {
