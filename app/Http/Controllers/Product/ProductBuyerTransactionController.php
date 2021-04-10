@@ -20,6 +20,100 @@ class ProductBuyerTransactionController extends ApiController
         $this->middleware('can:purchase,buyer');
     }
 
+    /**
+     * @OA\POST(
+     *      path="/products/{product}/buyers/{buyer}/transactions",
+     *      operationId="postProductBuyerTransaction",
+     *      tags={"Products"},
+     *      summary="Creates a product transaction for the buyer",
+     *      description="Returns the product transaction for the buyer's data",
+     *      security={
+     *          {"passport": {}},
+     *      },
+     *      @OA\Parameter(
+     *          name="product",
+     *          description="Product id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="buyer",
+     *          description="Buyer id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="quantity",
+     *                      type="integer",
+     *                  ),
+     *              )
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Created",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Returns when user is not authenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Returns when user is not authorized to perform this request",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=409,
+     *          description="Returns when there's some validation trouble",
+     *          @OA\JsonContent(
+     *              oneOf={
+     *                  @OA\Property(
+     *                      @OA\Property(property="error", type="string", example="The buyer must be different from the seller"),
+     *                      @OA\Property(property="code", type="integer", example="409"),
+     *                  ),
+     *                  @OA\Property(
+     *                      @OA\Property(property="error", type="string", example="The buyer must be different a verified user"),
+     *                      @OA\Property(property="code", type="integer", example="409"),
+     *                  ),
+     *                  @OA\Property(
+     *                      @OA\Property(property="error", type="string", example="The product is not available"),
+     *                      @OA\Property(property="code", type="integer", example="409"),
+     *                  ),
+     *                  @OA\Property(
+     *                      @OA\Property(property="error", type="string", example="The product does not have enough units for this transaction"),
+     *                      @OA\Property(property="code", type="integer", example="409"),
+     *                  ),
+     *              },
+     *          )
+     *      ),
+     * )
+     */
     public function __invoke(Product $product, Buyer $buyer)
     {
         $validatedAttributes = request()->validate([

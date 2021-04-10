@@ -1537,6 +1537,169 @@
                 ]
             }
         },
+        "/products/{product}/buyers/{buyer}/transactions": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Creates a product transaction for the buyer",
+                "description": "Returns the product transaction for the buyer's data",
+                "operationId": "postProductBuyerTransaction",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "buyer",
+                        "in": "path",
+                        "description": "Buyer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Returns when user is not authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Returns when user is not authorized to perform this request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "This action is unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "409": {
+                        "description": "Returns when there's some validation trouble",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "The buyer must be different from the seller"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "409"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "The buyer must be different a verified user"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "409"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "The product is not available"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "409"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "The product does not have enough units for this transaction"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "409"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
         "/products/{product}/categories": {
             "get": {
                 "tags": [
