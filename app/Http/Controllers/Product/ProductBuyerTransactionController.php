@@ -54,7 +54,7 @@ class ProductBuyerTransactionController extends ApiController
 
             $transaction = $product->transactions()->create($validatedAttributes);
 
-            return $this->showOne($transaction);
+            return $this->showOne($transaction, 201);
         });
     }
 }
