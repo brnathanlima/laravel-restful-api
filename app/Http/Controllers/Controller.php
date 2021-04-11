@@ -25,6 +25,16 @@ class Controller extends BaseController
      *      )
      * )
      *
+     * @OA\Server(
+     *      url=L5_SWAGGER_CONST_HOST,
+     *      description="Default development server"
+     * )
+     *
+     * @OA\Server(
+     *      url="https://brnathanlima-laravel-api.herokuapp.com",
+     *      description="Production server"
+     * )
+     *
      * @OA\Tag(
      *     name="Users",
      *     description="API Endpoints of Users"
