@@ -4975,9 +4975,9 @@
                 "scheme": "http",
                 "flows": {
                     "password": {
-                        "authorizationUrl": "http://localhost:8000/oauth/authorize",
-                        "tokenUrl": "http://localhost:8000/oauth/token",
-                        "refreshUrl": "http://localhost:8000/token/refresh",
+                        "authorizationUrl": "http://127.0.0.1:8000/oauth/authorize",
+                        "tokenUrl": "http://127.0.0.1:8000/oauth/token",
+                        "refreshUrl": "http://127.0.0.1:8000/token/refresh",
                         "scopes": {
                             "purchase-product": "Create a new transaction for a specific product.",
                             "manage-products": "Create, read, update and delete products (CRUD).",
