@@ -25,11 +25,6 @@ class Controller extends BaseController
      *      )
      * )
      *
-     * @OA\Server(
-     *      url=L5_SWAGGER_CONST_HOST,
-     *      description="Development API Server"
-     * )
-     *
      * @OA\Tag(
      *     name="Users",
      *     description="API Endpoints of Users"
