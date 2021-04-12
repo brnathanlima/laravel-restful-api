@@ -26,7 +26,8 @@ class ProductCategoryController extends ApiController
      *      summary="Get list of product's categories",
      *      description="Returns list of product's categories",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="product",
@@ -116,7 +117,8 @@ class ProductCategoryController extends ApiController
      *      summary="Attaches a product to a category",
      *      description="Returns product's attached categories data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="product",
@@ -188,7 +190,8 @@ class ProductCategoryController extends ApiController
      *      summary="Detatches a product's from a category and returns the remaining ones",
      *      description="Return",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="product",

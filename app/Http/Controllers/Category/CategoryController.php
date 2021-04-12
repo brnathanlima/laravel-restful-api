@@ -25,7 +25,8 @@ class CategoryController extends ApiController
      *      summary="Get list of categories",
      *      description="Returns list of categories",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="order_by",
@@ -99,7 +100,8 @@ class CategoryController extends ApiController
      *      summary="Store new category",
      *      description="Returns category data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\RequestBody(
      *          required=true,
@@ -183,7 +185,8 @@ class CategoryController extends ApiController
      *      summary="Get category information",
      *      description="Returns category data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="category",
@@ -244,7 +247,8 @@ class CategoryController extends ApiController
      *      summary="Update existing category",
      *      description="Returns updated category data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="category",
@@ -338,7 +342,8 @@ class CategoryController extends ApiController
      *      summary="Delete existing category",
      *      description="Deletes a category data and returns no content",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="category",

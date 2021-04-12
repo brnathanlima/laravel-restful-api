@@ -23,7 +23,8 @@ class BuyerController extends ApiController
      *      summary="Get list of buyers",
      *      description="Returns list of buyers",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="isVerified",
@@ -108,7 +109,8 @@ class BuyerController extends ApiController
      *      summary="Get buyer information",
      *      description="Returns buyer data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="buyer",

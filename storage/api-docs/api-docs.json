@@ -133,7 +133,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -242,7 +245,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -330,7 +336,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -463,7 +472,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -578,7 +590,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -702,7 +717,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -817,7 +835,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -917,7 +938,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -1032,7 +1056,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -1120,7 +1147,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -1234,7 +1264,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -1317,7 +1350,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -1450,7 +1486,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -1565,7 +1604,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -1689,7 +1731,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -1804,7 +1849,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -1983,7 +2031,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2098,7 +2149,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2195,7 +2249,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -2306,7 +2363,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2424,7 +2484,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2512,7 +2575,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2636,7 +2702,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2751,7 +2820,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2866,7 +2938,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -2975,7 +3050,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -3063,7 +3141,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -3196,7 +3277,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -3334,7 +3418,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -3535,7 +3622,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -3647,7 +3737,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -3771,7 +3864,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -3886,7 +3982,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -3995,7 +4094,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -4083,7 +4185,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -4171,7 +4276,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -4289,7 +4397,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -4410,7 +4521,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -4498,7 +4612,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -4671,7 +4788,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             },
@@ -4754,7 +4874,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -4809,7 +4932,10 @@
                 },
                 "security": [
                     {
-                        "passport": []
+                        "development": []
+                    },
+                    {
+                        "production": []
                     }
                 ]
             }
@@ -4973,15 +5099,33 @@
     ],
     "components": {
         "securitySchemes": {
-            "passport": {
+            "development": {
                 "type": "oauth2",
-                "description": "Laravel passport oauth2 security.",
+                "description": "Laravel  passport oauth2 security for development.",
                 "scheme": "http",
                 "flows": {
                     "password": {
                         "authorizationUrl": "http://127.0.0.1:8000/oauth/authorize",
                         "tokenUrl": "http://127.0.0.1:8000/oauth/token",
                         "refreshUrl": "http://127.0.0.1:8000/token/refresh",
+                        "scopes": {
+                            "purchase-product": "Create a new transaction for a specific product.",
+                            "manage-products": "Create, read, update and delete products (CRUD).",
+                            "manage-account": "Read your account data (except password) and modify it. Cannot delete.",
+                            "read-general": "Read General information like purchasing categories, purchased products,\n                                    selling products, selling categories, your transactions (purchases ans sales)."
+                        }
+                    }
+                }
+            },
+            "production": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security for production.",
+                "scheme": "httpa",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "https://brnathanlima-laravel-api.herokuapp.com/oauth/authorize",
+                        "tokenUrl": "https://brnathanlima-laravel-api.herokuapp.com/oauth/token",
+                        "refreshUrl": "https://brnathanlima-laravel-api.herokuapp.com/token/refresh",
                         "scopes": {
                             "purchase-product": "Create a new transaction for a specific product.",
                             "manage-products": "Create, read, update and delete products (CRUD).",

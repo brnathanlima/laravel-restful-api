@@ -24,7 +24,8 @@ class TransactionController extends ApiController
      *      summary="Get list of transactions",
      *      description="Returns list of transactions",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="quantity",
@@ -109,7 +110,8 @@ class TransactionController extends ApiController
      *      summary="Get transaction information",
      *      description="Returns transaction data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="transaction",
