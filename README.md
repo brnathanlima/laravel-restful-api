@@ -1,3 +1,6 @@
+## Demo
+
+Consulte a documentação e teste esta API através [deste link](https://brnathanlima-laravel-api.herokuapp.com/documentation).
 ## Configurando o Ambiente de Desenvolvimento
 
 1. Clone este repositório;
@@ -26,5 +29,5 @@ Client secret: A52ECFi9hIyPbq9fxfuPRIy6uIbK6DO9hBVo0d05
 
 ### Credenciais de usuário
 
-E-mail: admin@domi.nio
+E-mail: admin@domi.nio<br>
 Senha: password
