@@ -32,7 +32,8 @@ class SellerProductController extends ApiController
      *      summary="Get list of seller's products",
      *      description="Returns list of seller's products",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="seller",
@@ -144,7 +145,8 @@ class SellerProductController extends ApiController
      *      summary="Store new seller's product",
      *      description="Returns seller's product data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="seller",
@@ -271,7 +273,8 @@ class SellerProductController extends ApiController
      *      summary="Update a seller's product",
      *      description="Returns seller's product updated data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="seller",
@@ -451,7 +454,8 @@ class SellerProductController extends ApiController
      *      summary="Deletes a seller's product and return no content",
      *      description="Return",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="seller",

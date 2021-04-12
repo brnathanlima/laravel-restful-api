@@ -131,15 +131,33 @@ return [
                 */
 
                 // Open API 3.0 support
-                'passport' => [ // Unique name of security
+                'development' => [ // Unique name of security
                     'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
-                    'description' => 'Laravel passport oauth2 security.',
+                    'description' => 'Laravel  passport oauth2 security for development.',
                     'scheme' => 'http',
                     'flows' => [
                         'password' => [
                             'authorizationUrl' => config('app.url') . '/oauth/authorize',
                             'tokenUrl' => config('app.url') . '/oauth/token',
                             'refreshUrl' => config('app.url') . '/token/refresh',
+                            'scopes' => [
+                                'purchase-product' => 'Create a new transaction for a specific product.',
+                                'manage-products' => 'Create, read, update and delete products (CRUD).',
+                                'manage-account' => 'Read your account data (except password) and modify it. Cannot delete.',
+                                'read-general' => 'Read General information like purchasing categories, purchased products,
+                                    selling products, selling categories, your transactions (purchases ans sales).']
+                        ],
+                    ],
+                ],
+                'production' => [ // Unique name of security
+                    'type' => 'oauth2', // The type of the security scheme. Valid values are "basic", "apiKey" or "oauth2".
+                    'description' => 'Laravel passport oauth2 security for production.',
+                    'scheme' => 'httpa',
+                    'flows' => [
+                        'password' => [
+                            'authorizationUrl' => 'https://brnathanlima-laravel-api.herokuapp.com/oauth/authorize',
+                            'tokenUrl' => 'https://brnathanlima-laravel-api.herokuapp.com/oauth/token',
+                            'refreshUrl' => 'https://brnathanlima-laravel-api.herokuapp.com/token/refresh',
                             'scopes' => [
                                 'purchase-product' => 'Create a new transaction for a specific product.',
                                 'manage-products' => 'Create, read, update and delete products (CRUD).',

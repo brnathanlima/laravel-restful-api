@@ -21,7 +21,8 @@ class CategoryProductController extends ApiController
      *      summary="Get the list of a category's products",
      *      description="Returns the list of category's products",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="category",

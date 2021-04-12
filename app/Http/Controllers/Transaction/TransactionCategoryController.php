@@ -21,7 +21,8 @@ class TransactionCategoryController extends ApiController
      *      summary="Get list of transaction's categories",
      *      description="Returns list of transaction's categories",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="transaction",

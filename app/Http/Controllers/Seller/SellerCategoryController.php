@@ -24,7 +24,8 @@ class SellerCategoryController extends ApiController
      *      summary="Get list of seller's categories",
      *      description="Returns list of seller's categories",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="seller",
