@@ -26,5 +26,5 @@ Client secret: A52ECFi9hIyPbq9fxfuPRIy6uIbK6DO9hBVo0d05
 
 ### Credenciais de usuário
 
-E-mail: admin@domi.nio
+E-mail: admin@domi.nio<br>
 Senha: password
