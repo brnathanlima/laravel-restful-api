@@ -28,7 +28,8 @@ class ProductBuyerTransactionController extends ApiController
      *      summary="Creates a product transaction for the buyer",
      *      description="Returns the product transaction for the buyer's data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="product",

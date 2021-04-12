@@ -21,7 +21,8 @@ class ProductTransactionController extends ApiController
      *      summary="Get list of product's transactions",
      *      description="Returns list of product's transactions",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="product",

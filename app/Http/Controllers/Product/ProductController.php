@@ -20,7 +20,8 @@ class ProductController extends ApiController
      *      summary="Get list of products",
      *      description="Returns list of products",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="stock",
@@ -112,7 +113,8 @@ class ProductController extends ApiController
      *      summary="Get product information",
      *      description="Returns product data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="product",

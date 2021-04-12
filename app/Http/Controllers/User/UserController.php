@@ -32,7 +32,8 @@ class UserController extends ApiController
      *      summary="Get list of users",
      *      description="Returns list of users",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="isVerified",
@@ -126,7 +127,8 @@ class UserController extends ApiController
      *      summary="Store new user",
      *      description="Returns user data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\RequestBody(
      *          required=true,
@@ -235,7 +237,8 @@ class UserController extends ApiController
      *      summary="Get user information",
      *      description="Returns user data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="user",
@@ -296,7 +299,8 @@ class UserController extends ApiController
      *      summary="Update existing user",
      *      description="Returns updated user data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="user",
@@ -472,7 +476,8 @@ class UserController extends ApiController
      *      summary="Delete existing user",
      *      description="Deletes a user data and returns no content",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="user",
@@ -532,7 +537,8 @@ class UserController extends ApiController
      *      summary="Get user information",
      *      description="Returns user data",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Response(
      *          response=200,

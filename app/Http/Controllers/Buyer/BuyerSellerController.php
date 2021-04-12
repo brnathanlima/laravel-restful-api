@@ -21,7 +21,8 @@ class BuyerSellerController extends ApiController
      *      summary="Get list of buyer's sellers",
      *      description="Returns list of buyer's sellers",
      *      security={
-     *          {"passport": {}},
+     *          {"development": {}},
+     *          {"production": {}},
      *      },
      *      @OA\Parameter(
      *          name="buyer",
