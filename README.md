@@ -11,3 +11,20 @@
 9. Inicie o servidor da aplicação com o comando `php artisan serve`.
 10. Acesse a página com a documentação da API [no endereço padrão](http://127.0.0.1:8000/documentation) ou em outro que a aplicação estiver rodando.
 11. Opcionalmente você poderá analisar a aplicação pelo [Telescope](http://127.0.0.1:8000/telescope)
+
+## Credenciais
+
+### Credenciais OAuth2 Password grant client:
+
+Client ID: 932c5771-cc23-46db-91ec-8de36babb8c3<br>
+Client secret: a4KBvj18lHrB3vnhlEDEckeZoyJrTLLYXegs3oK0
+
+### Credenciais OAuth2 Client Credentials grant client:
+
+Client ID: 932c5841-325d-4abf-a139-10e6026c92cd<br>
+Client secret: A52ECFi9hIyPbq9fxfuPRIy6uIbK6DO9hBVo0d05
+
+### Credenciais de usuário
+
+E-mail: admin@domi.nio
+Senha: password
