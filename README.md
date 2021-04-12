@@ -16,12 +16,12 @@
 
 ### Credenciais OAuth2 Password grant client:
 
-Client ID: 932c5771-cc23-46db-91ec-8de36babb8c3
+Client ID: 932c5771-cc23-46db-91ec-8de36babb8c3<br>
 Client secret: a4KBvj18lHrB3vnhlEDEckeZoyJrTLLYXegs3oK0
 
 ### Credenciais OAuth2 Client Credentials grant client:
 
-Client ID: 932c5841-325d-4abf-a139-10e6026c92cd
+Client ID: 932c5841-325d-4abf-a139-10e6026c92cd<br>
 Client secret: A52ECFi9hIyPbq9fxfuPRIy6uIbK6DO9hBVo0d05
 
 ### Credenciais de usuário
