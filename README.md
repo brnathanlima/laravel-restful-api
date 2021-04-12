@@ -1,3 +1,6 @@
+## Demo
+
+Consulte a documentação e teste esta API através [deste link](https://brnathanlima-laravel-api.herokuapp.com/documentation).
 ## Configurando o Ambiente de Desenvolvimento
 
 1. Clone este repositório;
