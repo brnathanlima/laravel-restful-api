@@ -31,3 +31,13 @@ Senha: password
 9. Inicie o servidor da aplicação com o comando `php artisan serve`.
 10. Acesse a página com a documentação da API [no endereço padrão](http://127.0.0.1:8000/documentation) ou em outro em que a aplicação estiver rodando.
 11. Opcionalmente você poderá analisar a aplicação pelo [Telescope](http://127.0.0.1:8000/telescope)
+
+## TODO
+- Corrigir erro na rota `/categories/{category}/buyers`
+- Escrever testes dos endpoints de `users`
+- Escrever testes dos endpoints de `sellers`
+- Escrever testes dos endpoints de `buyers`
+- Escrever testes dos endpoints de `categories`
+- Escrever testes dos endpoints de `products`
+- Escrever testes dos endpoints de `transactions`
+- Substituir Fractal por Laravel `resources`
