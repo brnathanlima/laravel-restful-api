@@ -104,6 +104,7 @@ class BuyerSellerController extends ApiController
         $sellers = $buyer->transactions()
             ->with('product.seller')
             ->get()
+            ->where('product.seller_id', '!=', null)
             ->pluck('product.seller')
             ->unique('id')
             ->values();
