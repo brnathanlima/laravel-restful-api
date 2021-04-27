@@ -123,6 +123,7 @@ class BuyerProductController extends ApiController
         $products = $buyer->transactions()
             ->with('product')
             ->get()
+            ->where('product', '!=', null)
             ->pluck('product');
 
         return $this->showAll($products);
