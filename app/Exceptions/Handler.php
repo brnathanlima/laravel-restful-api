@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Traits\ApiResponser;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
@@ -50,6 +51,13 @@ class Handler extends ExceptionHandler
             return $this->errorResponse(
                 "Does not exist any {$model} with the specified identificator.",
                 Response::HTTP_NOT_FOUND
+            );
+        }
+
+        if ($exception instanceof AuthenticationException) {
+            return $this->errorResponse(
+                'Unauthenticated.',
+                Response::HTTP_UNAUTHORIZED
             );
         }
 
