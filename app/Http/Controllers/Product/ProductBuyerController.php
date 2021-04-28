@@ -101,7 +101,9 @@ class ProductBuyerController extends ApiController
     {
         $this->allowedAdminAction();
 
-        $buyers = $product->transactions()->with('buyer')->get()
+        $buyers = $product->transactions()
+            ->with('buyer')->get()
+            ->where('buyer', '!=', null)
             ->pluck('buyer')->unique('id')->values();
 
         return $this->showAll($buyers);

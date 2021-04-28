@@ -103,7 +103,8 @@ class CategoryBuyerController extends ApiController
 
         $buyers = $category->products()->whereHas('transactions')
             ->with('transactions.buyer')->get()->pluck('transactions')
-            ->collapse()->pluck('buyer')->unique()->values();
+            ->collapse()->where('buyer', '!=', null)->pluck('buyer')
+            ->unique()->values();
 
         return $this->showAll($buyers);
     }

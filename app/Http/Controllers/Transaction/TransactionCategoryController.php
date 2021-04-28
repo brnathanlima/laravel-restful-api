@@ -99,7 +99,7 @@ class TransactionCategoryController extends ApiController
      */
     public function __invoke(Transaction $transaction)
     {
-        $categories = $transaction->product->categories;
+        $categories = $transaction->product()->with('categories')->get();
 
         return $this->showAll($categories);
     }

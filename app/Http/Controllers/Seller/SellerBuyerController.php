@@ -101,8 +101,10 @@ class SellerBuyerController extends ApiController
     {
         $this->allowedAdminAction();
 
-        $buyers = $seller->products()->whereHas('transactions')->with('transactions')->get()
-            ->pluck('transactions')->collapse()->pluck('buyer')->unique('id')->values();
+        $buyers = $seller->products()->whereHas('transactions')
+            ->with('transactions')->get()->pluck('transactions')
+            ->collapse()->where('buyer', '!=', null)->pluck('buyer')
+            ->unique('id')->values();
 
         return $this->showAll($buyers);
     }

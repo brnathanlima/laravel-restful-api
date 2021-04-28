@@ -99,8 +99,10 @@ class CategorySellerController extends ApiController
      */
     public function __invoke(Category $category)
     {
-        $sellers = $category->products()->with('seller')->get()
-            ->pluck('seller')->unique()->values();
+        $sellers = $category->products()
+            ->with('seller')->get()
+            ->where('seller', '!=', null)
+            ->pluck('seller')->unique('id')->values();
 
         return $this->showAll($sellers);
     }
