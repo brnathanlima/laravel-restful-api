@@ -2,11 +2,16 @@
 
 namespace App\Exceptions;
 
+use App\Traits\ApiResponser;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use ApiResponser;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -36,5 +41,18 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof ModelNotFoundException) {
+            $model = strtolower(class_basename($exception->getModel()));
+            return $this->errorResponse(
+                "Does not exist any {$model} with the specified identificator.",
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        return parent::render($request, $exception);
     }
 }
