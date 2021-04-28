@@ -33,7 +33,7 @@ Senha: password
 11. Opcionalmente você poderá analisar a aplicação pelo [Telescope](http://127.0.0.1:8000/telescope)
 
 ## TODO
-- Corrigir erro na rota `/categories/{category}/buyers`
+- ~~Corrigir erro na rota `/categories/{category}/buyers`~~
 - Escrever testes dos endpoints de `users`
 - Escrever testes dos endpoints de `sellers`
 - Escrever testes dos endpoints de `buyers`
