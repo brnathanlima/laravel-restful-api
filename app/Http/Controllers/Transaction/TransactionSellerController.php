@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Transaction;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Seller;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,12 @@ class TransactionSellerController extends ApiController
      */
     public function __invoke(Transaction $transaction)
     {
-        $seller = $transaction->product->seller;
+        $seller = $transaction->product()->with('seller')->get()
+            ->pluck('seller')->first();
+
+        if (is_null($seller)) {
+            return new Seller;
+        };
 
         return $this->showOne($seller);
     }
