@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -51,6 +52,10 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof ValidationException) {
+            return $this->convertValidationExceptionToResponse($exception, $request);
+        }
+
         if ($exception instanceof ModelNotFoundException) {
             $model = strtolower(class_basename($exception->getModel()));
             return $this->errorResponse(
@@ -112,6 +117,17 @@ class Handler extends ExceptionHandler
         return $this->errorResponse(
             'We are facing an unespected problem. Please try again later',
             Response::HTTP_INTERNAL_SERVER_ERROR
+        );
+    }
+
+    public function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {
+        // dd($e);
+        $errors = $e->validator->getMessageBag();
+
+        return $this->errorResponse(
+            $errors,
+            Response::HTTP_UNPROCESSABLE_ENTITY
         );
     }
 }
