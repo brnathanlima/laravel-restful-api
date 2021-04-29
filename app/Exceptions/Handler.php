@@ -8,6 +8,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -67,6 +68,13 @@ class Handler extends ExceptionHandler
             return $this->errorResponse(
                 $exception->getMessage(),
                 Response::HTTP_FORBIDDEN
+            );
+        }
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return $this->errorResponse(
+                'The specified method for the request is invalid.',
+                Response::HTTP_METHOD_NOT_ALLOWED
             );
         }
 
