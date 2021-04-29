@@ -105,6 +105,13 @@ class Handler extends ExceptionHandler
             }
         }
 
-        return parent::render($request, $exception);
+        if (config('app.debug')) {
+            return parent::render($request, $exception);
+        }
+
+        return $this->errorResponse(
+            'We are facing an unespected problem. Please try again later',
+            Response::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 }
