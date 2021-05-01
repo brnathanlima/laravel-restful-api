@@ -72,30 +72,34 @@ class SellerCategoryController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=401,
-     *          description="Returns when category is not authenticated",
+     *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
-     *          description="Returns when category is not authorized to perform this request",
+     *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a seller with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any seller with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      *  )
