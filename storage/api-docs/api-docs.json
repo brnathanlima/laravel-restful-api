@@ -10,7 +10,7 @@
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
-        "version": "1.11.0"
+        "version": "1.12.0"
     },
     "servers": [
         {
@@ -77,14 +77,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -93,14 +97,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -109,9 +117,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a user with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any user with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -120,9 +142,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -200,9 +226,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -216,9 +246,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -232,9 +266,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -285,9 +323,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -301,9 +343,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -312,9 +358,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a buyer with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any buyer with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -323,9 +383,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -421,9 +485,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -437,9 +505,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -448,9 +520,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a buyer with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any buyer with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -459,9 +545,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -534,14 +624,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when seller is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -550,14 +644,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when seller is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -566,9 +664,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a buyer with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any buyer with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -577,9 +689,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -661,14 +777,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -677,14 +797,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -693,9 +817,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a buyer with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any buyer with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -704,9 +842,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -779,14 +921,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -795,14 +941,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -811,9 +961,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -822,9 +986,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -888,14 +1056,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -904,14 +1076,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -925,9 +1101,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -978,14 +1158,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -994,14 +1178,38 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Returns when there's not a buyer with the provided id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any buyer with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
                                         }
                                     },
                                     "type": "object"
@@ -1010,26 +1218,40 @@
                         }
                     },
                     "422": {
-                        "description": "Returns when there's some validation trouble",
+                        "description": "Returns when there's some valuseration trouble",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
+                                        "error": {
                                             "type": "array",
                                             "items": {
                                                 "properties": {
-                                                    "details": {
-                                                        "type": "string",
-                                                        "example": "The email has already been taken."
+                                                    "name": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The name is required."
+                                                            ]
+                                                        }
+                                                    },
+                                                    "description": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The description is required."
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "type": "object"
                                             }
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
                                         }
                                     },
                                     "type": "object"
@@ -1043,9 +1265,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1091,14 +1317,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1107,14 +1337,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1123,9 +1357,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1134,9 +1382,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1208,14 +1460,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1224,14 +1480,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1240,9 +1500,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1251,9 +1525,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1299,9 +1577,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1315,9 +1597,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1326,9 +1612,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1337,9 +1637,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1430,14 +1734,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1446,14 +1754,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1462,9 +1774,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1473,9 +1799,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1548,14 +1878,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1564,14 +1898,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1580,9 +1918,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1591,9 +1943,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1675,14 +2031,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1691,14 +2051,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1707,9 +2071,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any category with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1718,9 +2096,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1793,14 +2175,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when product is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1809,14 +2195,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when product is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1825,9 +2215,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any product with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -1836,9 +2240,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -1913,9 +2321,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -1929,9 +2341,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -1940,9 +2356,42 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product or buyer with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any product with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any buyer with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     },
                     "409": {
@@ -1970,7 +2419,7 @@
                                             "properties": {
                                                 "error": {
                                                     "type": "string",
-                                                    "example": "The buyer must be different a verified user"
+                                                    "example": "The buyer must be a verified user"
                                                 },
                                                 "code": {
                                                     "type": "integer",
@@ -2018,9 +2467,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2093,14 +2546,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2109,14 +2566,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2125,9 +2586,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any product with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2136,9 +2611,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2198,9 +2677,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2214,9 +2697,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2225,9 +2712,42 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product or category with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any product with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any category with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2236,9 +2756,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2284,7 +2808,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "204": {
                         "description": "Successful operation",
                         "content": {
                             "application/json": {
@@ -2298,9 +2822,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2314,9 +2842,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2325,21 +2857,54 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product or category with the provided id",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "error": {
-                                            "type": "string",
-                                            "example": "The specified category is not a category of this product"
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any product with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
                                         },
-                                        "code": {
-                                            "type": "integer",
-                                            "example": "404"
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any category with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "The specified category is not a category of this product"
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
                                         }
-                                    },
-                                    "type": "object"
+                                    ]
                                 }
                             }
                         }
@@ -2350,9 +2915,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2434,14 +3003,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when product is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2450,14 +3023,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when product is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2471,9 +3048,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2519,14 +3100,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when product is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2535,14 +3120,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when product is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2551,9 +3140,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any product with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2562,9 +3165,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2646,14 +3253,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2662,14 +3273,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2678,9 +3293,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any product with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2689,9 +3318,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2764,14 +3397,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when seller is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2780,14 +3417,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when seller is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2796,9 +3437,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any seller with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2807,9 +3462,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -2882,14 +3541,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2898,14 +3561,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2914,9 +3581,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any seller with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2925,9 +3606,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3005,9 +3690,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3021,9 +3710,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3037,9 +3730,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3090,9 +3787,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3106,9 +3807,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3117,9 +3822,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any seller with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -3128,9 +3847,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3221,14 +3944,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when seller is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3237,14 +3964,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when seller is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3253,9 +3984,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any seller with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -3264,9 +4009,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3339,9 +4088,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3355,9 +4108,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3366,9 +4123,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any seller with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "422": {
@@ -3377,21 +4148,44 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
+                                        "error": {
                                             "type": "array",
                                             "items": {
                                                 "properties": {
-                                                    "email": {
-                                                        "type": "string",
-                                                        "example": "The email has already been taken."
+                                                    "name": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The name is required."
+                                                            ]
+                                                        }
+                                                    },
+                                                    "description": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The description is required."
+                                                            ]
+                                                        }
+                                                    },
+                                                    "quantity": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The quantity is required."
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "type": "object"
                                             }
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
                                         }
                                     },
                                     "type": "object"
@@ -3405,9 +4199,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3504,9 +4302,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3520,9 +4322,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3531,9 +4337,42 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller or product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any seller with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any product with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     },
                     "409": {
@@ -3565,21 +4404,44 @@
                                         {
                                             "property": null,
                                             "properties": {
-                                                "message": {
-                                                    "type": "string",
-                                                    "example": "The given data was invalid."
-                                                },
-                                                "errors": {
+                                                "error": {
                                                     "type": "array",
                                                     "items": {
                                                         "properties": {
-                                                            "email": {
-                                                                "type": "string",
-                                                                "example": "The email has already been taken."
+                                                            "name": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "The name is required."
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "description": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "The description is required."
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "quantity": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "The quantity is required."
+                                                                    ]
+                                                                }
                                                             }
                                                         },
                                                         "type": "object"
                                                     }
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "422"
                                                 }
                                             },
                                             "type": "object"
@@ -3587,7 +4449,7 @@
                                         {
                                             "property": null,
                                             "properties": {
-                                                "message": {
+                                                "error": {
                                                     "type": "string",
                                                     "example": "The specified seller is not the actual seller of the product"
                                                 },
@@ -3609,9 +4471,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3666,9 +4532,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3682,9 +4552,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3693,9 +4567,42 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller or product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any seller with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        {
+                                            "property": null,
+                                            "properties": {
+                                                "error": {
+                                                    "type": "string",
+                                                    "example": "Does not exist any product with the specified identificator."
+                                                },
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "404"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     },
                     "422": {
@@ -3724,9 +4631,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3808,14 +4719,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3824,14 +4739,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3840,9 +4759,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a seller with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any seller with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -3851,9 +4784,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -3926,14 +4863,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when category is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -3942,14 +4883,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when category is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -3958,9 +4903,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a transaction with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any transaction with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -3969,9 +4928,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4044,14 +5007,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4060,14 +5027,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4081,9 +5052,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4129,14 +5104,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4145,14 +5124,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4161,9 +5144,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a transaction with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any transaction with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -4172,9 +5169,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4220,14 +5221,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when transaction is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4236,14 +5241,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when transaction is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4252,9 +5261,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a transaction with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any transaction with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -4263,9 +5286,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4352,9 +5379,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4368,9 +5399,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4384,9 +5419,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4448,9 +5487,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4464,9 +5507,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4480,21 +5527,44 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The given data was invaluser."
-                                        },
-                                        "errors": {
+                                        "error": {
                                             "type": "array",
                                             "items": {
                                                 "properties": {
+                                                    "name": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The name is required."
+                                                            ]
+                                                        }
+                                                    },
                                                     "email": {
-                                                        "type": "string",
-                                                        "example": "The email has already been taken."
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The email is required."
+                                                            ]
+                                                        }
+                                                    },
+                                                    "password": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The password is required."
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "type": "object"
                                             }
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
                                         }
                                     },
                                     "type": "object"
@@ -4508,9 +5578,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4561,9 +5635,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4577,9 +5655,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4588,9 +5670,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a user with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any user with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -4599,9 +5695,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4689,9 +5789,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4705,9 +5809,33 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Returns when there's not a user with the provided id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any user with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
                                         }
                                     },
                                     "type": "object"
@@ -4721,7 +5849,7 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
                                             "example": "Only verified users can modify the admin field."
                                         },
@@ -4735,33 +5863,50 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "Resource Not Found",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
                     "422": {
                         "description": "Returns when there's some valuseration trouble",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "The given data was invaluser."
-                                        },
-                                        "errors": {
+                                        "error": {
                                             "type": "array",
                                             "items": {
                                                 "properties": {
+                                                    "name": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The name is required."
+                                                            ]
+                                                        }
+                                                    },
                                                     "email": {
-                                                        "type": "string",
-                                                        "example": "The name field is required."
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The email is required."
+                                                            ]
+                                                        }
+                                                    },
+                                                    "password": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "The password is required."
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "type": "object"
                                             }
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "422"
                                         }
                                     },
                                     "type": "object"
@@ -4775,9 +5920,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4823,9 +5972,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4839,9 +5992,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -4850,9 +6007,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a user with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any user with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -4861,9 +6032,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4903,9 +6078,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -4919,9 +6098,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -4981,9 +6164,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a user with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any user with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -4992,9 +6189,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
@@ -5045,13 +6246,33 @@
                             }
                         }
                     },
+                    "404": {
+                        "description": "Returns when there's not a user with the provided id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any user with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
                     "409": {
                         "description": "User already veiried",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
                                             "example": "This user is already verified"
                                         },
@@ -5065,21 +6286,19 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "Resource Not Found",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
                     "500": {
                         "description": "Returns when there's some problem with the application. Please report to the development team when getting this response.",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
