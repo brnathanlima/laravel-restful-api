@@ -91,21 +91,24 @@ class UserController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
      *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      *  )
@@ -165,35 +168,49 @@ class UserController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
      *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=422,
      *          description="Returns when there's some valuseration trouble",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invaluser."),
      *              @OA\Property(
-     *                  property="errors",
+     *                  property="error",
      *                  type="array",
      *                  @OA\Items(
-     *                      @OA\Property(property="email", type="string", example="The email has already been taken."),
+     *                      @OA\Property(property="name", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The name is required."},
+     *                      )),
+     *                      @OA\Property(property="email", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The email is required."},
+     *                      )),
+     *                      @OA\Property(property="password", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The password is required."},
+     *                      )),
      *                  ),
-     *              )
+     *              ),
+     *              @OA\Property(property="code", type="integer", example="422"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -260,28 +277,32 @@ class UserController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
      *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a user with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any user with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -358,50 +379,65 @@ class UserController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
      *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Returns when there's not a user with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any user with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=409,
      *          description="Returned when trying give admin role to an unverified user.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Only verified users can modify the admin field."),
+     *              @OA\Property(property="error", type="string", example="Only verified users can modify the admin field."),
      *              @OA\Property(property="code", type="integer", example="409"),
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
      *          )
      *      ),
      *      @OA\Response(
      *          response=422,
      *          description="Returns when there's some valuseration trouble",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invaluser."),
      *              @OA\Property(
-     *                  property="errors",
+     *                  property="error",
      *                  type="array",
      *                  @OA\Items(
-     *                      @OA\Property(property="email", type="string", example="The name field is required."),
+     *                      @OA\Property(property="name", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The name is required."},
+     *                      )),
+     *                      @OA\Property(property="email", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The email is required."},
+     *                      )),
+     *                      @OA\Property(property="password", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The password is required."},
+     *                      )),
      *                  ),
-     *              )
+     *              ),
+     *              @OA\Property(property="code", type="integer", example="422"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -496,28 +532,32 @@ class UserController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
      *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a user with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any user with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -551,14 +591,16 @@ class UserController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -594,16 +636,18 @@ class UserController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a user with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any user with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -645,25 +689,27 @@ class UserController extends ApiController
      *          )
      *      ),
      *      @OA\Response(
-     *          response=409,
-     *          description="User already veiried",
+     *          response=404,
+     *          description="Returns when there's not a user with the provided id",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This user is already verified"),
-     *              @OA\Property(property="code", type="integer", example="409"),
+     *              @OA\Property(property="error", type="string", example="Does not exist any user with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
-     *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          response=409,
+     *          description="User already veiried",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="This user is already verified"),
+     *              @OA\Property(property="code", type="integer", example="409"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
