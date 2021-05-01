@@ -64,23 +64,26 @@ class CategoryController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=401,
-     *          description="Returns when category is not authenticated",
+     *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
-     *          description="Returns when category is not authorized to perform this request",
+     *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      *  )
@@ -128,37 +131,55 @@ class CategoryController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=401,
-     *          description="Returns when category is not authenticated",
+     *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
-     *          description="Returns when category is not authorized to perform this request",
+     *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Returns when there's not a buyer with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any buyer with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=422,
-     *          description="Returns when there's some validation trouble",
+     *          description="Returns when there's some valuseration trouble",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="The given data was invalid."),
      *              @OA\Property(
-     *                  property="errors",
+     *                  property="error",
      *                  type="array",
      *                  @OA\Items(
-     *                      @OA\Property(property="details", type="string", example="The email has already been taken."),
+     *                      @OA\Property(property="name", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The name is required."},
+     *                      )),
+     *                      @OA\Property(property="description", type="array", @OA\Items (
+     *                          type="string",
+     *                          enum = {"The description is required."},
+     *                      )),
      *                  ),
-     *              )
+     *              ),
+     *              @OA\Property(property="code", type="integer", example="422"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -206,30 +227,34 @@ class CategoryController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=401,
-     *          description="Returns when category is not authenticated",
+     *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
-     *          description="Returns when category is not authorized to perform this request",
+     *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a category with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any category with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -292,30 +317,34 @@ class CategoryController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=401,
-     *          description="Returns when category is not authenticated",
+     *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
-     *          description="Returns when category is not authorized to perform this request",
+     *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a category with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any category with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
@@ -362,28 +391,32 @@ class CategoryController extends ApiController
      *          response=401,
      *          description="Returns when user is not authenticated",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *              @OA\Property(property="error", type="string", example="Unauthenticated."),
+     *              @OA\Property(property="code", type="integer", example="401"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=403,
      *          description="Returns when user is not authorized to perform this request",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="This action is unauthorized"),
+     *              @OA\Property(property="error", type="string", example="Invalid scopes provided."),
+     *              @OA\Property(property="code", type="integer", example="403"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=404,
-     *          description="Resource Not Found",
-     *          @OA\MediaType(
-     *              mediaType="application/json",
+     *          description="Returns when there's not a category with the provided id",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="error", type="string", example="Does not exist any category with the specified identificator."),
+     *              @OA\Property(property="code", type="integer", example="404"),
      *          )
      *      ),
      *      @OA\Response(
      *          response=500,
      *          description="Returns when there's some problem with the application. Please report to the development team when getting this response.",
      *          @OA\JsonContent(
-     *              @OA\Property(property="message", type="string", example="Server Error"),
+     *              @OA\Property(property="error", type="string", example="We are facing an unespected problem. Please try again later"),
+     *              @OA\Property(property="code", type="integer", example="500"),
      *          )
      *      ),
      * )
