@@ -2175,14 +2175,18 @@
                         }
                     },
                     "401": {
-                        "description": "Returns when product is not authenticated",
+                        "description": "Returns when user is not authenticated",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Unauthenticated"
+                                            "example": "Unauthenticated."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "401"
                                         }
                                     },
                                     "type": "object"
@@ -2191,14 +2195,18 @@
                         }
                     },
                     "403": {
-                        "description": "Returns when product is not authorized to perform this request",
+                        "description": "Returns when user is not authorized to perform this request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "This action is unauthorized"
+                                            "example": "Invalid scopes provided."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "403"
                                         }
                                     },
                                     "type": "object"
@@ -2207,9 +2215,23 @@
                         }
                     },
                     "404": {
-                        "description": "Resource Not Found",
+                        "description": "Returns when there's not a product with the provided id",
                         "content": {
-                            "application/json": {}
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Does not exist any product with the specified identificator."
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "404"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
                         }
                     },
                     "500": {
@@ -2218,9 +2240,13 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "message": {
+                                        "error": {
                                             "type": "string",
-                                            "example": "Server Error"
+                                            "example": "We are facing an unespected problem. Please try again later"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "500"
                                         }
                                     },
                                     "type": "object"
