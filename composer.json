@@ -49,7 +49,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "classmap": [
+            "tests/TestCase.php",
+            "tests/PassportTestCase.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -63,6 +67,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "test": [
+            "vendor/bin/phpunit --coverage-html tests/coverage"
         ]
     }
 }
