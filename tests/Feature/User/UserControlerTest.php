@@ -115,6 +115,28 @@ class UserControlerTest extends TestCase
             ]);
     }
 
+    public function testClientIsNotAbleToCreateUserWithMissingData()
+    {
+        Passport::actingAsClient(Client::factory()->create(), []);
+
+        $this->json('POST', '/users')
+            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)
+            ->assertExactJson([
+                'error' => [
+                    'name' => [
+                        'The name field is required.'
+                    ],
+                    'email' => [
+                        'The email field is required.'
+                    ],
+                    'password' => [
+                        'The password field is required.'
+                    ]
+                ],
+                'code' => 422
+            ]);
+    }
+
     public function testShowSpecificUser()
     {
         $user = User::factory()->create([
