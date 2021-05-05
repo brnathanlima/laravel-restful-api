@@ -137,6 +137,44 @@ class UserControlerTest extends TestCase
             ]);
     }
 
+    public function testUserIsAbleToUpdateOwnData()
+    {
+        $user = User::factory()->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => false
+        ]);
+
+        Passport::actingAs($user, ['manage-account']);
+
+        $payload = [
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'password' => 'password',
+        ];
+
+        $this->json('PUT', "users/$user->id", $payload)
+            ->assertStatus(Response::HTTP_OK)
+            ->assertExactJson([
+                'data' => [
+                    'identifier' => $user->id,
+                    'name' => $payload['name'],
+                    'email' => $payload['email'],
+                    'isVerified' => 0,
+                    'isAdmin' => false,
+                    'registeredAt' => $user->created_at,
+                    'lastChange' => $user->updated_at,
+                    'deletedDate' => $user->deleted_at,
+                    'links' => [
+                        [
+                            'rel' => 'self',
+                            'href' => route('users.show', $user->id)
+                        ]
+                    ]
+                ]
+            ]);
+    }
+
     public function testShowSpecificUser()
     {
         $user = User::factory()->create([
