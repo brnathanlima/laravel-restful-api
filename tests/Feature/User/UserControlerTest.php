@@ -200,6 +200,31 @@ class UserControlerTest extends TestCase
             ]);
     }
 
+    public function testUnverifiedUserIsNotAbleToUpdateAdminField()
+    {
+        $user = User::factory()->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => true
+        ]);
+
+        Passport::actingAs($user, ['manage-account']);
+
+        $payload = [
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'password' => 'password',
+            'isAdmin' => true
+        ];
+
+        $this->json('PUT', "users/$user->id", $payload)
+            ->assertStatus(Response::HTTP_CONFLICT)
+            ->assertExactJson([
+                'error' => 'Only verified users can modify the admin field.',
+                'code' => Response::HTTP_CONFLICT
+            ]);
+    }
+
     public function testUserIsAbleToUpdateAdminField()
     {
         $user = User::factory()->create([
