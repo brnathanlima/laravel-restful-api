@@ -175,6 +175,31 @@ class UserControlerTest extends TestCase
             ]);
     }
 
+    public function testUserIsNotAbleToUpdateAdminField()
+    {
+        $user = User::factory()->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => false
+        ]);
+
+        Passport::actingAs($user, ['manage-account']);
+
+        $payload = [
+            'name' => $this->faker->name,
+            'email' => $this->faker->email,
+            'password' => 'password',
+            'isAdmin' => true
+        ];
+
+        $this->json('PUT', "users/$user->id", $payload)
+            ->assertForbidden()
+            ->assertExactJson([
+                'error' => 'This action is unauthorized',
+                'code' => Response::HTTP_FORBIDDEN
+            ]);
+    }
+
     public function testShowSpecificUser()
     {
         $user = User::factory()->create([
