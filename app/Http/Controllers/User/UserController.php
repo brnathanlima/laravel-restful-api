@@ -493,13 +493,6 @@ class UserController extends ApiController
             $user->email = $validatedData['email'];
         }
 
-        if (!$user->isDirty()) {
-            return $this->errorResponse(
-                'You need to specify a different value to update.',
-                HttpResponse::HTTP_UNPROCESSABLE_ENTITY
-            );
-        }
-
         $user->save();
 
         return $this->showOne($user);
