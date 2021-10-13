@@ -18,7 +18,8 @@ class UserController extends ApiController
         $this->middleware('client.credentials')->only(['store', 'resend']);
         $this->middleware('auth:api')->except(['store', 'resend', 'verify']);
         $this->middleware('transform.input:' . UserTransformer::class)->only(['store', 'update']);
-        $this->middleware('scope:manage-account')->only(['show', 'update']);
+        $this->middleware('scope:manage-account')->only(['show', 'update', 'me']);
+        $this->middleware('scope:read-general')->only('index');
         $this->middleware('can:view,user')->only('show');
         $this->middleware('can:update,user')->only('update');
         $this->middleware('can:delete,user')->only('destroy');
@@ -490,13 +491,6 @@ class UserController extends ApiController
             $user->verified = User::UNVERIFIED_USER;
             $user->verification_token = User::generateVerificationCode();
             $user->email = $validatedData['email'];
-        }
-
-        if (!$user->isDirty()) {
-            return $this->errorResponse(
-                'You need to specify a different value to update.',
-                HttpResponse::HTTP_UNPROCESSABLE_ENTITY
-            );
         }
 
         $user->save();

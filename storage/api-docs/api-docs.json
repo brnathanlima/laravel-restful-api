@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000",
+            "url": "http://laravel-restful-api.test",
             "description": "Default development server"
         },
         {
@@ -6324,9 +6324,9 @@
                 "scheme": "http",
                 "flows": {
                     "password": {
-                        "authorizationUrl": "http://127.0.0.1:8000/oauth/authorize",
-                        "tokenUrl": "http://127.0.0.1:8000/oauth/token",
-                        "refreshUrl": "http://127.0.0.1:8000/token/refresh",
+                        "authorizationUrl": "http://laravel-restful-api.test/oauth/authorize",
+                        "tokenUrl": "http://laravel-restful-api.test/oauth/token",
+                        "refreshUrl": "http://laravel-restful-api.test/token/refresh",
                         "scopes": {
                             "purchase-product": "Create a new transaction for a specific product.",
                             "manage-products": "Create, read, update and delete products (CRUD).",
