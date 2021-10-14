@@ -64,7 +64,7 @@ class User extends Authenticatable
 
     public function getNameAttribute($name)
     {
-        return ucwords($name);
+        return strtoupper($name);
     }
 
     public function setEmailAttribute($email)
