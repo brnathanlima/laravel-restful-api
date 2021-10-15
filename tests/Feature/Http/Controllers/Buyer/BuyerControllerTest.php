@@ -11,10 +11,15 @@ class BuyerControllerTest extends TestCase
 {
     protected $scopes = [];
 
+    public function setUp() : void
+    {
+        parent::setUp();
+
+        $this->seed();
+    }
+
     public function testAdminIsAbleToListBuyers()
     {
-        $this->seed();
-
         $admin = User::factory()->create([
             'verified' => 0,
             'verification_token' => User::generateVerificationCode(),
@@ -43,6 +48,24 @@ class BuyerControllerTest extends TestCase
                         ]
                     ]
                 ]
+            ]);
+    }
+
+    public function testRegularUserIsNotAbleToListBuyers()
+    {
+        $user = User::factory()->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => false
+        ]);
+
+        Passport::actingAs($user, ['read-general']);
+
+        $this->json('GET', '/buyers')
+            ->assertForbidden()
+            ->assertExactJson([
+                'error' => 'This action is unauthorized',
+                'code' => Response::HTTP_FORBIDDEN
             ]);
     }
 }
