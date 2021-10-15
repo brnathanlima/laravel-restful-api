@@ -51,6 +51,24 @@ class BuyerControllerTest extends TestCase
             ]);
     }
 
+    public function testAdminIsNotAbleToListBuyersWithoutReadGeneralScope()
+    {
+        $admin = User::factory()->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => true
+        ]);
+
+        Passport::actingAs($admin);
+
+        $this->json('GET', '/buyers')
+            ->assertForbidden()
+            ->assertExactJson([
+                'error' => 'Invalid scope(s) provided.',
+                'code' => Response::HTTP_FORBIDDEN
+            ]);
+    }
+
     public function testRegularUserIsNotAbleToListBuyers()
     {
         $user = User::factory()->create([
