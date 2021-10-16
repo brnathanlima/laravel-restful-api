@@ -55,4 +55,28 @@ class BuyerTransactionControllerTest extends TestCase
                 ]
             ]);
     }
+
+    public function testBuyerIsNotAbleToSeeOwnTransactionsWithoutReadGeneralScope()
+    {
+        $buyer = User::factory()->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => false
+        ]);
+
+        Transaction::factory()->create([
+            'quantity' => 4,
+            'product_id' => 1,
+            'buyer_id' => $buyer->id
+        ]);
+
+        Passport::actingAs($buyer);
+
+        $this->json('GET', "/buyers/{$buyer->id}/transactions")
+            ->assertForbidden()
+            ->assertExactJson([
+                'error' => 'Invalid scope(s) provided.',
+                'code' => Response::HTTP_FORBIDDEN
+            ]);
+    }
 }
