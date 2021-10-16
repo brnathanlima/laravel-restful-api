@@ -147,8 +147,10 @@ class UserControlerTest extends TestCase
 
         Passport::actingAs($user, ['manage-account']);
 
+        $name = strtoupper($this->faker->name);
+
         $payload = [
-            'name' => $this->faker->name,
+            'name' => $name,
             'email' => $this->faker->email,
             'password' => 'password',
         ];
@@ -158,7 +160,7 @@ class UserControlerTest extends TestCase
             ->assertExactJson([
                 'data' => [
                     'identifier' => $user->id,
-                    'name' => $payload['name'],
+                    'name' => $name,
                     'email' => $payload['email'],
                     'isVerified' => 0,
                     'isAdmin' => false,
@@ -235,8 +237,10 @@ class UserControlerTest extends TestCase
 
         Passport::actingAs($user, ['manage-account']);
 
+        $name = strtoupper($this->faker->name);
+
         $payload = [
-            'name' => $this->faker->name,
+            'name' => $name,
             'email' => $this->faker->email,
             'password' => 'password',
             'isAdmin' => false
@@ -247,7 +251,7 @@ class UserControlerTest extends TestCase
             ->assertExactJson([
                 'data' => [
                     'identifier' => $user->id,
-                    'name' => $payload['name'],
+                    'name' => $name,
                     'email' => $payload['email'],
                     'isVerified' => 0,
                     'isAdmin' => false,

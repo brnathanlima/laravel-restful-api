@@ -34,9 +34,9 @@ Senha: password
 
 ## TODO
 - ~~Corrigir erro na rota `/categories/{category}/buyers`~~
-- Escrever testes dos endpoints de `users`
+- ~~Escrever testes dos endpoints de `users`~~
 - Escrever testes dos endpoints de `sellers`
-- Escrever testes dos endpoints de `buyers`
+- ~~Escrever testes dos endpoints de `buyers`~~
 - Escrever testes dos endpoints de `categories`
 - Escrever testes dos endpoints de `products`
 - Escrever testes dos endpoints de `transactions`
