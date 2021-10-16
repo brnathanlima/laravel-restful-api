@@ -79,4 +79,30 @@ class BuyerTransactionControllerTest extends TestCase
                 'code' => Response::HTTP_FORBIDDEN
             ]);
     }
+
+    public function testBuyerIsNotAbleToSeeAnotherBuyerTransactions()
+    {
+        $buyers = User::factory()->count(2)->create([
+            'verified' => 0,
+            'verification_token' => User::generateVerificationCode(),
+            'admin' => false
+        ]);
+
+        foreach ($buyers as $buyer) {
+            Transaction::factory()->create([
+                'quantity' => 4,
+                'product_id' => 1,
+                'buyer_id' => $buyer->id
+            ]);
+        }
+
+        Passport::actingAs($buyers[0], ['read-general']);
+
+        $this->json('GET', "/buyers/{$buyers[1]->id}/transactions")
+            ->assertForbidden()
+            ->assertExactJson([
+                'error' => 'This action is unauthorized.',
+                'code' => Response::HTTP_FORBIDDEN
+            ]);
+    }
 }
